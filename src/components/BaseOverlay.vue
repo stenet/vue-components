@@ -1,11 +1,17 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref, watch, watchEffect } from "vue";
+import { computed, ref, watch, watchEffect } from "vue";
 
 const props = withDefaults(defineProps<{
+  contentX?: "left" | "center" | "right";
+  contentY?: "top" | "center" | "bottom";
+  dlay?: number;
   fullScreen?: boolean;
   shader?: boolean;
-  visible?: boolean
+  visible?: boolean;
 }>(), {
+  contentX: "center",
+  contentY: "center",
+  delay: 200,
   fullScreen: true,
   shader: true,
   visible: false
@@ -16,6 +22,13 @@ const overlayStyle = ref({
   "base-overlay--visible": false,
   "base-overlay--content-visible": false,
   "base-overlay--shader-visible": false
+});
+
+const contentStyle = computed(() => {
+  const r: Record<string, boolean> = {};
+  r["base-overlay__content-x-" + props.contentX] = true;
+  r["base-overlay__content-y-" + props.contentY] = true;
+  return r;
 });
 
 watchEffect(() => {
@@ -39,10 +52,10 @@ watch(() => props.visible, (v) => {
     if (props.fullScreen) {
       document.body.style.overflow = "hidden";
     }
-    
+
     timeout = setTimeout(() => {
       overlayStyle.value["base-overlay--content-visible"] = true;
-    }, 200);
+    }, props.delay);
   } else {
     document.body.style.overflow = defaultBodyOverflow;
     overlayStyle.value["base-overlay--content-visible"] = false;
@@ -56,10 +69,12 @@ watch(() => props.visible, (v) => {
     :class="overlayStyle">
 
     <div class="base-overlay__shader"></div>
-    <div class="base-overlay__content">
-      <div>
-        <slot></slot>
-      </div>
+    <div 
+      class="base-overlay__content"
+      :class="contentStyle">
+
+      <slot></slot>
+      
     </div>
 
   </div>
@@ -100,5 +115,29 @@ watch(() => props.visible, (v) => {
 
 .base-overlay__content {
 @apply absolute flex items-center justify-center w-full h-full opacity-0 transition duration-500;
+}
+
+.base-overlay__content-x-left {
+@apply justify-start;
+}
+
+.base-overlay__content-x-center {
+@apply justify-center;
+}
+
+.base-overlay__content-x-right {
+@apply justify-end;
+}
+
+.base-overlay__content-y-top {
+@apply items-start;
+}
+
+.base-overlay__content-y-center {
+@apply items-center;
+}
+
+.base-overlay__content-y-bottom {
+@apply items-end;
 }
 </style>

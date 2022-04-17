@@ -2,12 +2,18 @@
 import BaseOverlay from "@/components/BaseOverlay.vue";
 import { ref } from "vue";
 
+const contentX = ref("center");
+const contentY = ref("center");
+const delay = ref(200);
 const fullScreen = ref(false);
 const shader = ref(false);
 const visible = ref(false);
-function onShowClick(showShader: boolean, showFullScreen = true) {
-  fullScreen.value = showFullScreen;
-  shader.value = showShader;
+function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, contentXV = "center", contentYV = "center") {
+  contentX.value = contentXV;
+  contentY.value = contentYV;
+  delay.value = delayV;
+  fullScreen.value = fullscreenV;
+  shader.value = shaderV;
   visible.value = true;
   
   setTimeout(() => {
@@ -31,16 +37,22 @@ function onShowClick(showShader: boolean, showFullScreen = true) {
         
         <button
           @click="onShowClick(true, false)">Show overlay inline</button>
+
+        <button
+          @click="onShowClick(true, true, 0, 'center', 'bottom')">Show overlay without delay bottom</button>
       </div>
       
       <base-overlay
+        :content-x="contentX"
+        :content-y="contentY"
+        :delay="delay"
         :fullScreen="fullScreen"
         :shader="shader"
         :visible="visible">
         
-        <div class="flex flex-col items-center gap-4 p-4 border rounded bg-blue-200 border-blue-400 text-blue-900">
+        <div class="flex flex-col items-center gap-4 p-4 border rounded bg-gray-200 border-gray-300 text-gray-900">
           <div class="text-4xl">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-spinner fa-spin"></i>
           </div>
           <div>
             Overlay closes in a few seconds
