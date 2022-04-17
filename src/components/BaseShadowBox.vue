@@ -18,7 +18,7 @@ const showHeader = computed(() => {
     <div
       v-if="showHeader"
       class="base-shadow-box__header">
-      
+
       <div class="base-shadow-box__titles">
         <div
           v-if="props.title"
@@ -35,9 +35,9 @@ const showHeader = computed(() => {
       <div class="base-shadow-box__toolbar button-group">
         <slot name="toolbar"></slot>
       </div>
-      
+
     </div>
-    
+
     <div
       class="base-shadow-box__content">
       <slot></slot>
@@ -47,30 +47,34 @@ const showHeader = computed(() => {
 
 <style lang="less">
 .base-shadow-box {
-  @apply flex flex-col gap-6 bg-white rounded shadow p-4;
-  
+@apply flex flex-col gap-6 bg-white rounded shadow p-4;
+
   button {
-    @apply bg-gray-100;
-    
+  @apply bg-gray-100;
+
     &:hover {
-      @apply bg-gray-300;
+    @apply bg-gray-300;
     }
   }
 }
+
 .base-shadow-box__header {
-  @apply flex gap-4;
+@apply flex gap-4;
 }
+
 .base-shadow-box__titles {
-  @apply flex-grow;
+@apply flex-grow;
 }
+
 .base-shadow-box__title {
-  @apply text-lg font-bold;
+@apply text-lg font-bold;
 
   + .base-shadow-box__subtitle {
-    @apply mt-1;
+  @apply mt-1;
   }
 }
+
 .base-shadow-box__subtitle {
-  @apply text-gray-600 text-sm;
+@apply text-gray-600 text-sm;
 }
 </style>

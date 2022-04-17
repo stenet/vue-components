@@ -9,10 +9,9 @@ const props = withDefaults(defineProps<{
   icon: "fa-solid fa-info-circle fa-fw"
 });
 
-const typeClass = computed(() =>
-{
+const typeClass = computed(() => {
   return `base-notification--${props.type}`;
-})
+});
 </script>
 
 <template>
@@ -33,19 +32,34 @@ const typeClass = computed(() =>
 
 <style lang="less">
 .base-notification {
-  @apply p-4 border rounded flex gap-4;
+@apply p-4 border rounded flex gap-4;
 }
+
 .base-notification--default {
-  @apply border-blue-400 bg-blue-100;
+@apply border-blue-200 bg-blue-100;
+
+  i {
+  @apply text-blue-800;
+  }
 }
+
 .base-notification--danger {
-  @apply border-red-400 bg-red-100;
+@apply border-red-200 bg-red-100;
+
+  i {
+  @apply text-red-800;
+  }
 }
+
 .base-notification--success {
-  @apply border-green-400 bg-green-100;
+@apply border-green-200 bg-green-100;
+
+  i {
+  @apply text-green-800;
+  }
 }
 
 .base-notification__icon {
-  @apply text-gray-600;
+@apply text-gray-600;
 }
 </style>

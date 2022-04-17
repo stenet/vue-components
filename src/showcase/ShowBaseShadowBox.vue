@@ -44,7 +44,8 @@ import BaseShadowBox from "@/components/BaseShadowBox.vue";
         <template #toolbar>
           <button>
             <i class="fa-solid fa-plus"></i>
-            Toolbar</button>
+            Toolbar
+          </button>
           <button>
             <i class="fa-solid fa-key"></i>
           </button>

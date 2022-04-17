@@ -31,15 +31,18 @@ function onError() {
     <div class="button-group mt-4">
       <button
         v-if="!isLoading"
-        @click="onStart()">Start loading</button>
-      
-      <button 
+        @click="onStart()">Start loading
+      </button>
+
+      <button
         v-if="isLoading"
-        @click="onFinish()">Finish</button>
-      
-      <button 
+        @click="onFinish()">Finish
+      </button>
+
+      <button
         v-if="isLoading"
-        @click="onError()">Error</button>
+        @click="onError()">Error
+      </button>
     </div>
   </div>
 </template>

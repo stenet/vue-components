@@ -4,6 +4,7 @@ import ShowBaseShadowBox from "@/showcase/ShowBaseShadowBox.vue";
 import ShowBaseAvatar from "@/showcase/ShowBaseAvatar.vue";
 import ShowBaseNotification from "@/showcase/ShowBaseNotification.vue";
 import ShowBaseBadge from "@/showcase/ShowBaseBadge.vue";
+import ShowBaseOverlay from "@/showcase/ShowBaseOverlay.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import ShowBaseBadge from "@/showcase/ShowBaseBadge.vue";
     <show-base-avatar></show-base-avatar>
     <show-base-notification></show-base-notification>
     <show-base-badge></show-base-badge>
+    <show-base-overlay></show-base-overlay>
   </div>
 </template>
 

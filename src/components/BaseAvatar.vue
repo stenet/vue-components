@@ -11,20 +11,21 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <div 
+  <div
     class="base-avatar">
     <img :src="props.image">
   </div>
 </template>
 
 <style lang="less">
-  .base-avatar {
-    @apply overflow-hidden rounded;
-    height: v-bind("props.size");
-    width: v-bind("props.size");
-    
-    img {
-      @apply object-cover;
-    }
+.base-avatar {
+@apply overflow-hidden rounded;
+
+  height: v-bind("props.size");
+  width: v-bind("props.size");
+
+  img {
+  @apply object-cover;
   }
+}
 </style>

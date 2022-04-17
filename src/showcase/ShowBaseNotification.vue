@@ -9,17 +9,17 @@ import BaseNotification from "@/components/BaseNotification.vue";
     </h2>
     <div class="flex flex-col gap-4">
       <base-notification>
-        Alles normal
+        Everything is working as expected
       </base-notification>
-      
+
       <base-notification
         type="danger">
-        Fehler!!!
+        Oooops, an error has occured!
       </base-notification>
 
       <base-notification
         type="success">
-        Daten gespeichert
+        Well done, all data saved.
       </base-notification>
     </div>
   </div>
