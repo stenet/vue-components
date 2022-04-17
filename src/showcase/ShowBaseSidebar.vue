@@ -2,10 +2,10 @@
 import BaseSidebar from "@/components/BaseSidebar.vue";
 import { ref } from "vue";
 
-const x = ref("right");
+const x = ref<any>("right");
 const visible = ref(false);
 
-function onShowClick(xV: string) {
+function onShowClick(xV: any) {
   x.value = xV;
   visible.value = true;
 }

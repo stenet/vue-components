@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import BaseAvatar from "@/components/BaseAvatar.vue";
+import Avatar from "@/assets/avatar.jpg";
 </script>
 
 <template>
@@ -8,7 +9,8 @@ import BaseAvatar from "@/components/BaseAvatar.vue";
       base-avatar
     </h2>
     <div>
-      <base-avatar></base-avatar>
+      <base-avatar
+        :image="Avatar"></base-avatar>
     </div>
   </div>
 </template>

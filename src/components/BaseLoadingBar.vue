@@ -104,14 +104,14 @@ watch(() => props.hasError, (v) => {
 </script>
 
 <template>
-  <div class="tip-loading-bar">
-    <div class="tip-loading-bar__progress" ref="loader"></div>
+  <div class="base-loading-bar">
+    <div class="base-loading-bar__progress" ref="loader"></div>
   </div>
 </template>
 
 <style lang="less">
 
-.tip-loading-bar__progress {
+.base-loading-bar__progress {
 @apply h-1 w-0;
 }
 </style>

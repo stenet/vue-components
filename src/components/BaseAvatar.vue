@@ -1,17 +1,15 @@
 <script lang="ts" setup>
-import Avatar from "@/assets/avatar.jpg";
-
 const props = withDefaults(defineProps<{
   image?: string;
   size?: string
 }>(), {
-  image: Avatar,
   size: "50px"
 });
 </script>
 
 <template>
   <div
+    v-if="props.image"
     class="base-avatar">
     <img :src="props.image">
   </div>

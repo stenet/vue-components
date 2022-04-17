@@ -2,13 +2,13 @@
 import BaseOverlay from "@/components/BaseOverlay.vue";
 import { ref } from "vue";
 
-const contentX = ref("center");
-const contentY = ref("center");
+const contentX = ref<any>("center");
+const contentY = ref<any>("center");
 const delay = ref(200);
 const fullScreen = ref(false);
 const shader = ref(false);
 const visible = ref(false);
-function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, contentXV = "center", contentYV = "center") {
+function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, contentXV: any = "center", contentYV: any = "center") {
   contentX.value = contentXV;
   contentY.value = contentYV;
   delay.value = delayV;
