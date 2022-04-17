@@ -1,19 +1,16 @@
 {
   "name": "stef-vue-components",
-  "version": "0.0.9",
-  "main": "./dist/vue-components.umd.js",
+  "version": "0.0.11",
   "module": "./dist/vue-components.es.js",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/vue-components.es.js",
-      "require": "./dist/vue-components.umd.js"
+      "import": "./dist/vue-components.es.js"
     },
-    "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+    "./dist/style.css": {
+      "import": "./dist/style.css"
     }
   },
   "types": "./dist/src/index.d.ts",

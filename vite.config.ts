@@ -16,15 +16,11 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "VueComponents",
-      fileName: (format) => `vue-components.${format}.js`
+      fileName: (format) => `vue-components.${format}.js`,
+      formats: ["es"]
     },
     rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
-      }
+      external: ["vue"]
     }
   }
 });
