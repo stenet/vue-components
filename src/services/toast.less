@@ -1,0 +1,19 @@
+.base-toast {
+@apply flex flex-col gap-4 fixed w-full pointer-events-none;
+}
+
+.base-toast__item {
+@apply flex gap-4 items-center rounded border border-gray-300 bg-gray-200 p-4 mx-4 transition opacity-0 shadow-xl max-w-4xl;
+}
+
+.base-toast__item--info {
+@apply border-sky-200 bg-sky-100 text-sky-900;
+}
+
+.base-toast__item--danger {
+@apply border-red-200 bg-red-100 text-red-900;
+}
+
+.base-toast__item--success {
+@apply border-emerald-200 bg-emerald-100 text-emerald-900;
+}

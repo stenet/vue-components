@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<{
   icon?: string;
 }>(), {
   type: "default",
-  icon: "fa-solid fa-info-circle fa-fw"
+  icon: "fa-solid fa-circle-info fa-fw"
 });
 
 const typeClass = computed(() => {
@@ -36,10 +36,10 @@ const typeClass = computed(() => {
 }
 
 .base-notification--default {
-@apply border-blue-200 bg-blue-100;
+@apply border-sky-200 bg-sky-100;
 
   i {
-  @apply text-blue-800;
+  @apply text-sky-800;
   }
 }
 
@@ -52,10 +52,10 @@ const typeClass = computed(() => {
 }
 
 .base-notification--success {
-@apply border-green-200 bg-green-100;
+@apply border-emerald-200 bg-emerald-100;
 
   i {
-  @apply text-green-800;
+  @apply text-emerald-800;
   }
 }
 

@@ -99,7 +99,7 @@ function onCloseClick() {
 
 <style lang="less">
 .base-sidebar {
-@apply flex flex-col h-full bg-gray-100 transition-transform duration-300;
+@apply flex flex-col h-full bg-gray-50 transition-transform duration-300;
   width: v-bind("props.width");
 }
 
