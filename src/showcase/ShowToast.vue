@@ -1,17 +1,12 @@
 <script lang="ts" setup>
+import { useToast } from "@/composables/useToast";
 
-import { configureToastContainer, showToast } from "@/services/toast";
+const toast = useToast();
 
 function onShowClick(type?: "info" | "danger" | "success") {
-  showToast({
+  toast.show({
     type: type,
     innerHtml: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
-  });
-}
-function onConfigureClick(y: "top" | "bottom", x: "left" | "center" | "right") {
-  configureToastContainer({
-    x,
-    y
   });
 }
 </script>
@@ -37,24 +32,6 @@ function onConfigureClick(y: "top" | "bottom", x: "left" | "center" | "right") {
 
         <button
           @click="onShowClick('success')">Show success toast
-        </button>
-      </div>
-
-      <div class="button-group">
-        <button
-          @click="onConfigureClick('bottom', 'right')">Configure bottom/right
-        </button>
-
-        <button
-          @click="onConfigureClick('bottom', 'center')">Configure bottom/center
-        </button>
-
-        <button
-          @click="onConfigureClick('top', 'right')">Configure top/right
-        </button>
-
-        <button
-          @click="onConfigureClick('top', 'center')">Configure top/center
         </button>
       </div>
     </div>
