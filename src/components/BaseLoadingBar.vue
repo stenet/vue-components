@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<{
   isLoading?: boolean;
   hasError?: boolean;
 }>(), {
-  color: "#2563eb"
+  color: "var(--blue-2)"
 });
 
 const loader = ref<HTMLElement>();
@@ -19,11 +19,11 @@ function createLoadingAnimation() {
       loader.value!,
       [
         {
-          backgroundColor: "gray",
+          backgroundColor: "var(--gray-2)",
           width: "0"
         },
         {
-          backgroundColor: "gray",
+          backgroundColor: "var(--gray-2)",
           width: "100%"
         }
       ],
@@ -64,7 +64,7 @@ function finish() {
   finishAnimation?.play();
 }
 function getColor() {
-  return props.hasError ? "#dc2626" : props.color;
+  return props.hasError ? "var(--red-2)" : props.color;
 }
 
 onMounted(() => {
@@ -105,13 +105,11 @@ watch(() => props.hasError, (v) => {
 
 <template>
   <div class="base-loading-bar">
-    <div class="base-loading-bar__progress" ref="loader"></div>
+    <div
+      class="base-loading-bar__progress h-1 w-0"
+      ref="loader"></div>
   </div>
 </template>
 
 <style lang="less">
-
-.base-loading-bar__progress {
-@apply h-1 w-0;
-}
 </style>

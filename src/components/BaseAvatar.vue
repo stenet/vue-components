@@ -10,20 +10,18 @@ const props = withDefaults(defineProps<{
 <template>
   <div
     v-if="props.image"
-    class="base-avatar">
-    <img :src="props.image">
+    class="base-avatar overflow-hidden rounded">
+
+    <img
+      class="object-cover"
+      :src="props.image">
+
   </div>
 </template>
 
 <style lang="less">
 .base-avatar {
-@apply overflow-hidden rounded;
-
   height: v-bind("props.size");
   width: v-bind("props.size");
-
-  img {
-  @apply object-cover;
-  }
 }
 </style>

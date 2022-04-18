@@ -12,9 +12,7 @@ import BaseBadge from "@/components/BaseBadge.vue";
       <base-badge type="blue">blue</base-badge>
       <base-badge type="green">green</base-badge>
       <base-badge type="red">red</base-badge>
-      <base-badge type="yellow">yellow</base-badge>
       <base-badge type="orange">orange</base-badge>
-      <base-badge type="purple">purple</base-badge>
     </div>
   </div>
 </template>

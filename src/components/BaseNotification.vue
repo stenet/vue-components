@@ -16,7 +16,7 @@ const typeClass = computed(() => {
 
 <template>
   <div
-    class="base-notification"
+    class="base-notification flex gap-4 p-4 border rounded"
     :class="typeClass">
 
     <div class="base-notification__icon">
@@ -31,35 +31,34 @@ const typeClass = computed(() => {
 </template>
 
 <style lang="less">
-.base-notification {
-@apply p-4 border rounded flex gap-4;
-}
-
 .base-notification--default {
-@apply border-sky-200 bg-sky-100;
+  border-color: var(--blue-4);
+  background-color: var(--blue-6);
 
   i {
-  @apply text-sky-800;
+    color: var(--blue-1);
   }
 }
 
 .base-notification--danger {
-@apply border-red-200 bg-red-100;
+  border-color: var(--red-4);
+  background-color: var(--red-6);
 
   i {
-  @apply text-red-800;
+    color: var(--red-1);
   }
 }
 
 .base-notification--success {
-@apply border-emerald-200 bg-emerald-100;
+  border-color: var(--green-4);
+  background-color: var(--green-6);
 
   i {
-  @apply text-emerald-800;
+    color: var(--green-1);
   }
 }
 
 .base-notification__icon {
-@apply text-gray-600;
+  color: var(--gray-1);
 }
 </style>

@@ -65,12 +65,15 @@ watch(() => props.visible, (v) => {
 
 <template>
   <div
-    class="base-overlay"
+    class="base-overlay absolute top-0 bottom-0 left-0 right-0 bg-transparent z-40 hidden"
     :class="overlayStyle">
 
-    <div class="base-overlay__shader"></div>
     <div 
-      class="base-overlay__content"
+      class="base-overlay__shader absolute w-full h-full bg-white opacity-0 transition duration-300 hidden">
+    </div>
+    
+    <div 
+      class="base-overlay__content absolute flex w-full h-full opacity-0 transition duration-500"
       :class="contentStyle">
 
       <slot></slot>
@@ -82,7 +85,6 @@ watch(() => props.visible, (v) => {
 
 <style lang="less">
 .base-overlay {
-@apply absolute top-0 bottom-0 left-0 right-0 bg-transparent z-40 hidden;
 
   &.base-overlay--full-screen {
   @apply fixed;
@@ -107,14 +109,6 @@ watch(() => props.visible, (v) => {
     @apply block;
     }
   }
-}
-
-.base-overlay__shader {
-@apply absolute w-full h-full bg-white opacity-0 transition duration-300 hidden;
-}
-
-.base-overlay__content {
-@apply absolute flex items-center justify-center w-full h-full opacity-0 transition duration-500;
 }
 
 .base-overlay__content-x-left {

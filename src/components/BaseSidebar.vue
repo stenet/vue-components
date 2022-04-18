@@ -79,14 +79,14 @@ function onCloseClick() {
     @click="onOverlayClick($event)">
 
     <div
-      class="base-sidebar"
+      class="base-sidebar flex flex-col h-full transition-transform duration-300"
       :class="sidebarStyle">
       
       <div
         v-if="props.showCloseButton"
-        class="base-sidebar__close-button">
+        class="base-sidebar__close-button flex justify-end p-4">
         <i 
-          class="fa-solid fa-times"
+          class="fa-solid fa-times cursor-pointer"
           @click="onCloseClick()"></i>
       </div>
 
@@ -99,29 +99,22 @@ function onCloseClick() {
 
 <style lang="less">
 .base-sidebar {
-@apply flex flex-col h-full bg-gray-50 transition-transform duration-300;
+  border-color: var(--gray-5);
+  background-color: var(--gray-6);
   width: v-bind("props.width");
 }
 
 .base-sidebar--left {
-@apply border-r border-gray-200;
+@apply border-r;
   transform: translateX(calc(-1 * v-bind("props.width")));
 }
 
 .base-sidebar--right {
-@apply border-l border-gray-200;
+@apply border-l;
   transform: translateX(v-bind("props.width"));
 }
 
 .base-sidebar--visible {
   transform: translateX(0);
-}
-
-.base-sidebar__close-button {
-  @apply flex justify-end p-4;
-  
-  i {
-    @apply cursor-pointer;
-  }
 }
 </style>

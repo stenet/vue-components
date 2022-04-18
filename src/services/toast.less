@@ -3,17 +3,29 @@
 }
 
 .base-toast__item {
-@apply flex gap-4 items-center rounded border border-gray-300 bg-gray-200 p-4 mx-4 transition opacity-0 shadow-xl max-w-4xl;
+@apply flex gap-4 items-center rounded border p-4 mx-4 transition opacity-0 shadow-xl max-w-4xl;
+  border-color: var(--gray-3);
+  background-color: var(--gray-4);
+  
+  i {
+    @apply text-2xl;
+  }
 }
 
 .base-toast__item--info {
-@apply border-sky-200 bg-sky-100 text-sky-900;
+  border-color: var(--blue-3);
+  background-color: var(--blue-4);
+  color: var(--blue-0);
 }
 
 .base-toast__item--danger {
-@apply border-red-200 bg-red-100 text-red-900;
+  border-color: var(--red-3);
+  background-color: var(--red-4);
+  color: var(--red-0);
 }
 
 .base-toast__item--success {
-@apply border-emerald-200 bg-emerald-100 text-emerald-900;
+  border-color: var(--green-3);
+  background-color: var(--green-4);
+  color: var(--green-0);
 }

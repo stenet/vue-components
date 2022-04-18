@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 const props = withDefaults(defineProps<{
-  type?: "gray" | "blue" | "green" | "red" | "yellow" | "orange" | "purple";
+  type?: "gray" | "blue" | "green" | "red" | "orange";
 }>(), {
   type: "gray"
 });
@@ -14,7 +14,7 @@ const typeClass = computed(() => {
 
 <template>
   <div
-    class="base-badge"
+    class="base-badge font-semibold text-xs px-2 py-1 rounded"
     :class="typeClass">
 
     <slot></slot>
@@ -23,35 +23,28 @@ const typeClass = computed(() => {
 </template>
 
 <style lang="less">
-.base-badge {
-@apply font-semibold text-xs px-2 py-1 rounded;
-}
-
 .base-badge--gray {
-@apply bg-gray-200 text-gray-800;
+  background-color: var(--gray-5);
+  color: var(--gray-1);
 }
 
 .base-badge--blue {
-@apply bg-sky-100 text-sky-800;
+  background-color: var(--blue-5);
+  color: var(--blue-1);
 }
 
 .base-badge--green {
-@apply bg-emerald-100 text-emerald-800;
+  background-color: var(--green-5);
+  color: var(--green-1);
 }
 
 .base-badge--red {
-@apply bg-red-100 text-red-800;
-}
-
-.base-badge--yellow {
-@apply bg-yellow-100 text-yellow-800;
+  background-color: var(--red-5);
+  color: var(--red-1);
 }
 
 .base-badge--orange {
-@apply bg-orange-100 text-orange-800;
-}
-
-.base-badge--purple {
-@apply bg-purple-100 text-purple-800;
+  background-color: var(--orange-5);
+  color: var(--orange-1);
 }
 </style>
