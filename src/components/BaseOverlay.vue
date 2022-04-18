@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref, watch, watchEffect } from "vue";
+import { computed, onUnmounted, ref, watch, watchEffect } from "vue";
 
 const props = withDefaults(defineProps<{
   contentTransition?: string;
@@ -42,8 +42,8 @@ watchEffect(() => {
 
 let timeout: number | null;
 let defaultBodyOverflow = document.body.style.overflow;
-const overlayVisible = ref(props.visible);
-const contentVisible = ref(props.visible);
+const overlayVisible = ref(false);
+const contentVisible = ref(false);
 
 watch(() => props.visible, (v) => {
   if (timeout) {
@@ -65,6 +65,12 @@ watch(() => props.visible, (v) => {
     contentVisible.value = false;
     overlayStyle.value["base-overlay--content-visible"] = false;
   }
+}, {
+  immediate: true
+});
+
+onUnmounted(() => {
+  document.body.style.overflow = defaultBodyOverflow;
 });
 
 function onAfterLeave() {

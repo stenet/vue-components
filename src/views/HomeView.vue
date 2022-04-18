@@ -7,6 +7,7 @@ import ShowBaseBadge from "@/showcase/ShowBaseBadge.vue";
 import ShowBaseOverlay from "@/showcase/ShowBaseOverlay.vue";
 import ShowBaseSidebar from "@/showcase/ShowBaseSidebar.vue";
 import ShowToast from "@/showcase/ShowToast.vue";
+import ShowDialog from "@/showcase/ShowDialog.vue";
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import ShowToast from "@/showcase/ShowToast.vue";
     <show-base-overlay></show-base-overlay>
     <show-base-sidebar></show-base-sidebar>
     <show-toast></show-toast>
+    <show-dialog></show-dialog>
   </div>
 </template>
 

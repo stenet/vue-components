@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, inject, provide, ref } from "vue";
+import { computed, provide, ref } from "vue";
 import { ToastProvider } from "@/components/ToastProvider";
 import type { ToastOptions } from "@/components/ToastProvider";
 
@@ -97,7 +97,6 @@ function getIcon(options: ToastOptions) {
         <div
           v-html="item.innerHtml"
           class="base-toast__content">
-
         </div>
       </div>
     </transition-group>

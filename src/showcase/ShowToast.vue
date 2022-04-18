@@ -14,7 +14,7 @@ function onShowClick(type?: "info" | "danger" | "success") {
 <template>
   <div class="flex flex-col relative">
     <h2>
-      showToast
+      useToast.show
     </h2>
     <div class="flex flex-col gap-4">
       <div class="button-group">

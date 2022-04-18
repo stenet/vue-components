@@ -50,7 +50,7 @@ function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, content
         :shader="shader"
         :visible="visible">
         
-        <div class="flex flex-col items-center gap-4 p-4 border rounded bg-gray-200 border-gray-300 text-gray-900">
+        <div class="flex flex-col items-center gap-4 p-4 border rounded shadow-xl bg-gray-200 border-gray-300 text-gray-900">
           <div class="text-4xl">
             <i class="fa-solid fa-spinner fa-spin"></i>
           </div>
