@@ -2,13 +2,15 @@
 import { computed, ref, watch, watchEffect } from "vue";
 
 const props = withDefaults(defineProps<{
+  contentTransition?: string;
   contentX?: "left" | "center" | "right";
   contentY?: "top" | "center" | "bottom";
-  dlay?: number;
+  delay?: number;
   fullScreen?: boolean;
   shader?: boolean;
   visible?: boolean;
 }>(), {
+  contentTransition: "base-overlay-default",
   contentX: "center",
   contentY: "center",
   delay: 200,
@@ -40,67 +42,77 @@ watchEffect(() => {
 
 let timeout: number | null;
 let defaultBodyOverflow = document.body.style.overflow;
+const overlayVisible = ref(props.visible);
+const contentVisible = ref(props.visible);
 
 watch(() => props.visible, (v) => {
   if (timeout) {
     clearTimeout(timeout);
   }
 
-  overlayStyle.value["base-overlay--visible"] = v;
-
   if (v) {
     if (props.fullScreen) {
       document.body.style.overflow = "hidden";
     }
 
+    overlayVisible.value = true;
     timeout = setTimeout(() => {
+      contentVisible.value = true;
       overlayStyle.value["base-overlay--content-visible"] = true;
     }, props.delay);
+    
   } else {
-    document.body.style.overflow = defaultBodyOverflow;
+    contentVisible.value = false;
     overlayStyle.value["base-overlay--content-visible"] = false;
   }
 });
+
+function onAfterLeave() {
+  document.body.style.overflow = defaultBodyOverflow;
+  overlayVisible.value = false;
+}
 </script>
 
 <template>
   <div
-    class="base-overlay absolute top-0 bottom-0 left-0 right-0 bg-transparent z-40 hidden"
+    v-if="overlayVisible"
+    class="base-overlay absolute top-0 bottom-0 left-0 right-0 bg-transparent z-40"
     :class="overlayStyle">
 
-    <div 
+    <div
       class="base-overlay__shader absolute w-full h-full bg-white opacity-0 transition duration-300 hidden">
     </div>
-    
-    <div 
-      class="base-overlay__content absolute flex w-full h-full opacity-0 transition duration-500"
-      :class="contentStyle">
 
-      <slot></slot>
-      
-    </div>
+    <transition 
+      :name="props.contentTransition"
+      @after-leave="onAfterLeave()">
+      <div
+        v-if="contentVisible"
+        class="base-overlay__content absolute flex w-full h-full transition duration-300"
+        :class="contentStyle">
+
+        <slot></slot>
+
+      </div>
+    </transition>
 
   </div>
 </template>
 
 <style lang="less">
 .base-overlay {
+  --anim-translate-x: 0;
+  --anim-translate-y: 0;
+  --anim-scale: 1;
+  --anim-opacity: 0;
 
   &.base-overlay--full-screen {
   @apply fixed;
   }
 
-  &.base-overlay--visible {
-  @apply block;
-  }
-
   &.base-overlay--content-visible {
     .base-overlay__shader {
     @apply opacity-70;
-    }
-
-    .base-overlay__content {
-    @apply opacity-100;
     }
   }
 
@@ -133,5 +145,10 @@ watch(() => props.visible, (v) => {
 
 .base-overlay__content-y-bottom {
 @apply items-end;
+}
+
+.base-overlay-default-enter-from, .base-overlay-default-leave-to {
+  opacity: var(--anim-opacity);
+  transform: translateX(var(--anim-translate-x)) translateY(var(--anim-translate-y)) scale(var(--anim-scale));
 }
 </style>

@@ -21,35 +21,23 @@ const emits = defineEmits<{
 }>();
 
 const overlayVisible = ref(props.modelValue);
-const sidebarVisible = ref(props.modelValue);
 
+const translateX = computed(() => {
+  if (props.x == "right") {
+    return props.width;
+  } else {
+    return `-${props.width}`;
+  }
+})
 const sidebarStyle = computed(() => {
   const r: Record<string, boolean> = {};
   r["base-sidebar--" + props.x] = true;
-  r["base-sidebar--visible"] = unref(sidebarVisible);
 
   return r;
 });
 
-let timeout: number | null;
 watch(() => props.modelValue, (v) => {
-  if (timeout) {
-    clearTimeout(timeout);
-  }
-
-  if (v) {
-    overlayVisible.value = true;
-
-    setTimeout(() => {
-      sidebarVisible.value = v;
-    }, 0);
-  } else {
-    sidebarVisible.value = false;
-    
-    setTimeout(() => {
-      overlayVisible.value = v;
-    }, 300);
-  }
+  overlayVisible.value = v;
 });
 
 function onOverlayClick(ev: Event) {
@@ -71,6 +59,7 @@ function onCloseClick() {
 
 <template>
   <base-overlay
+    class="base-overlay-from-sidebar"
     :content-x="props.x"
     :delay="0"
     :full-screen="true"
@@ -103,18 +92,15 @@ function onCloseClick() {
   background-color: var(--gray-6);
   width: v-bind("props.width");
 }
+.base-overlay.base-overlay-from-sidebar {
+  --anim-translate-x: v-bind("translateX");
+}
 
 .base-sidebar--left {
 @apply border-r;
-  transform: translateX(calc(-1 * v-bind("props.width")));
 }
 
 .base-sidebar--right {
 @apply border-l;
-  transform: translateX(v-bind("props.width"));
-}
-
-.base-sidebar--visible {
-  transform: translateX(0);
 }
 </style>
