@@ -9,7 +9,49 @@ import BaseGridCol from "@/components/BaseGridCol.vue";
       base-grid
     </h2>
     <div class="flex flex-col gap-4">
-      <base-grid class="show-base-grid__grid">
+      <base-grid class="show-base-grid__grid-1" cols="d6" gap="0.5rem">
+        <base-grid-col span="xl:2">
+          Div 1
+        </base-grid-col>
+        <base-grid-col>
+          Div 2
+        </base-grid-col>
+        <base-grid-col>
+          Div 3
+        </base-grid-col>
+        <base-grid-col>
+          Div 4
+        </base-grid-col>
+        <base-grid-col>
+          Div 5
+        </base-grid-col>
+        <base-grid-col>
+          Div 6
+        </base-grid-col>
+      </base-grid>
+
+      <base-grid class="show-base-grid__grid-2" cols="d4" gap="0.5rem">
+        <base-grid-col span="xl:2">
+          Div 1
+        </base-grid-col>
+        <base-grid-col>
+          Div 2
+        </base-grid-col>
+        <base-grid-col>
+          Div 3
+        </base-grid-col>
+        <base-grid-col>
+          Div 4
+        </base-grid-col>
+        <base-grid-col>
+          Div 5
+        </base-grid-col>
+        <base-grid-col>
+          Div 6
+        </base-grid-col>
+      </base-grid>
+
+      <base-grid class="show-base-grid__grid-3" cols="d2" gap="0.5rem">
         <base-grid-col span="xl:2">
           Div 1
         </base-grid-col>
@@ -34,7 +76,13 @@ import BaseGridCol from "@/components/BaseGridCol.vue";
 </template>
 
 <style lang="less">
-.show-base-grid__grid > div {
+.show-base-grid__grid-1 > div {
   background-color: var(--green-5);
+}
+.show-base-grid__grid-2 > div {
+  background-color: var(--blue-5);
+}
+.show-base-grid__grid-3 > div {
+  background-color: var(--red-5);
 }
 </style>

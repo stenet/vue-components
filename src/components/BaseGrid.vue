@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
   cols?: string;
   gap?: string;
 }>(), {
-  cols: "1 s:2 m:3 l:4 xl:6",
+  cols: "d4",
   gap: "1rem",
 });
 
@@ -22,7 +22,7 @@ watchEffect(() => {
     return;
   }
   
-  const columns = parseInt(getGridDescriptionInfo(gridInfoProvider.value.size, props.cols) || "1");
+  const columns = parseInt(getGridDescriptionInfo(gridInfoProvider.value.size, getCols()) || "1");
   gridInfoProvider.value.cols = columns;
   
   style.value.gridTemplateColumns = `repeat(${columns}, minmax(0, 1fr))`;
@@ -53,8 +53,21 @@ function updateSize() {
     gridInfoProvider.value.size = "xs";
   }
 }
-function getColCount() {
-  props.cols.split(' ');
+function getCols() {
+  switch (props.cols) {
+    case "d6": {
+      return "1 s:2 m:3 l:4 xl:6";
+    }
+    case "d4": {
+      return "1 m:2 l:4";
+    }
+    case "d2": {
+      return "1 l:2";
+    }
+    default: {
+      return props.cols;
+    }
+  }
 }
 </script>
 
