@@ -5,7 +5,7 @@ import BaseDialogProvider from "@/components/BaseDialogProvider.vue";
 
 <template>
   <base-dialog-provider>
-    <base-toast-provider x="right" y="top">
+    <base-toast-provider x="center" y="bottom">
       <RouterView/>
     </base-toast-provider>
   </base-dialog-provider>

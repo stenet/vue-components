@@ -63,11 +63,11 @@ async function onButtonClick(item: Item, button: DialogButton) {
       item.disabled = true;
       item.isLoading = true;
       await r;
-    }
-    catch (ex) {
+    } catch (ex) {
       item.disabled = false;
-      item.isLoading = false;
       throw ex;
+    } finally {
+      item.isLoading = false;
     }
   }
 

@@ -157,7 +157,7 @@ function getIcon(options: ToastOptions) {
 .toast-top-enter-from,
 .toast-top-leave-to {
   opacity: 0;
-  transform: translateY(-30px);
+  transform: translateY(-30px) scale(.7);
 }
 
 .toast-bottom-move,
@@ -169,7 +169,7 @@ function getIcon(options: ToastOptions) {
 .toast-bottom-enter-from,
 .toast-bottom-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(30px) scale(.7);
 }
 
 .toast-top-leave-active, .toast-bottom-leave-active {

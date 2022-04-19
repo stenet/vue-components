@@ -1,5 +1,6 @@
 ﻿<script lang="ts" setup>
 import { ref } from "vue";
+import DxLoadPanel from "devextreme-vue/load-panel";
 
 const dataSource = ref([{
   name: "AAA"
@@ -8,6 +9,13 @@ const dataSource = ref([{
 }, {
   name: "CCC"
 }]);
+
+const loadPanelVisible = ref(false);
+function onShowLoadingClick() {
+  loadPanelVisible.value = true;
+  
+  setTimeout(() => loadPanelVisible.value = false, 4000);
+}
 
 </script>
 
@@ -25,6 +33,15 @@ const dataSource = ref([{
         :data-source="dataSource">
         <dx-column caption="Name" data-field="name"></dx-column>
       </dx-data-grid>
+      
+      <div>
+        <dx-button
+          text="Show loading"
+          @click="onShowLoadingClick()"></dx-button>
+        
+        <dx-load-panel
+          :visible="loadPanelVisible"></dx-load-panel>
+      </div>
     </div>
   </div>
 </template>

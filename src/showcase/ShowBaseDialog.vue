@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 
 import { useDialog } from "@/composables/use-dialog";
+import { useToast } from "@/composables/use-toast";
 
 const dialog = useDialog();
+const toast = useToast();
 
 function onShowClick(type?: "info" | "danger" | "success") {
   dialog.showYesNo({
@@ -24,6 +26,10 @@ function onShowWithPromiseClick() {
         return new Promise((resolve) => {
           setTimeout(() => {
             resolve(true);
+            toast.show({
+              type: "success",
+              innerHtml: "Data have been saved successfully :)"
+            })
           }, 2000);
         });
       }
