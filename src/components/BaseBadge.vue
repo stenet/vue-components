@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 const props = withDefaults(defineProps<{
-  text?: string;
+  text?: string | number;
   icon?: string
   color?: string;
   x?: "left" | "right",
