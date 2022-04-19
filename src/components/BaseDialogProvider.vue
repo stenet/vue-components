@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ContentReadyEvent } from "devextreme/ui/button";
 import { provide, ref } from "vue";
 import { DialogProvider } from "@/components/DialogProvider";
 import type { DialogButton, DialogFullOptions } from "@/components/DialogProvider";
@@ -13,18 +14,20 @@ interface Item extends DialogFullOptions {
   disabled: boolean;
   isLoading: boolean;
   visible: boolean;
+  focused: boolean;
 }
 
 const items = ref<Item[]>([]);
 
 let dialogIndex = 0;
-function show(options: DialogFullOptions) {
+function show(options: DialogFullOptions) {  
   const item: Item = {
     key: dialogIndex++,
     disabled: false,
     isLoading: false,
     icon: getIcon(options),
     visible: true,
+    focused: false,
     class: `base-dialog__item--${options.type || "default"}`,
     ...options
   };
@@ -70,6 +73,18 @@ async function onButtonClick(item: Item, button: DialogButton) {
 
   item.visible = false;
 }
+function onButtonReady(item: Item, button: DialogButton, ev: ContentReadyEvent) {
+  if (item.focused) {
+    return;
+  }
+  
+  if (item.buttons[0] != button) {
+    return;
+  }
+  
+  item.focused = true;
+  ev.component.focus();
+}
 function onOverlayHidden(item: Item) {
   const indexOf = items.value.findIndex(i => i.key == item.key);
   items.value.splice(indexOf, 1);  
@@ -110,15 +125,16 @@ function onOverlayHidden(item: Item) {
       </div>
 
       <div class="base-dialog__buttons button-group self-end p-4 pt-0">
-        <dx-button
-          v-for="btn in item.buttons"
-          :key="btn.text"
-          :disabled="item.disabled"
-          :icon="btn.icon"
-          :type="btn.type"
-          :text="btn.text"
-          @click="onButtonClick(item, btn)">
-        </dx-button>
+        <template v-for="btn in item.buttons" :key="btn.text">
+          <dx-button
+            :disabled="item.disabled"
+            :icon="btn.icon"
+            :type="btn.type"
+            :text="btn.text"
+            @content-ready="onButtonReady(item, btn, $event)"
+            @click="onButtonClick(item, btn)">
+          </dx-button>          
+        </template>
       </div>
 
     </div>
