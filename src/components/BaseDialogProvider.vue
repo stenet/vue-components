@@ -83,7 +83,9 @@ function onButtonReady(item: Item, button: DialogButton, ev: ContentReadyEvent) 
   }
   
   item.focused = true;
-  ev.component.focus();
+  setTimeout(() => {
+    ev.component.focus();
+  });
 }
 function onOverlayHidden(item: Item) {
   const indexOf = items.value.findIndex(i => i.key == item.key);
@@ -133,7 +135,7 @@ function onOverlayHidden(item: Item) {
             :text="btn.text"
             @content-ready="onButtonReady(item, btn, $event)"
             @click="onButtonClick(item, btn)">
-          </dx-button>          
+          </dx-button>
         </template>
       </div>
 

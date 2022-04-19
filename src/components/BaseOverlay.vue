@@ -97,7 +97,8 @@ function onAfterLeave() {
       :name="props.contentTransition"
       @after-leave="onAfterLeave()">
       <div
-        v-if="contentVisible"
+        v-if="overlayVisible"
+        v-show="contentVisible"
         class="base-overlay__content absolute flex w-full h-full transition duration-300"
         :class="contentStyle">
 

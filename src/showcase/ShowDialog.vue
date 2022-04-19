@@ -13,6 +13,7 @@ function onShowClick(type?: "info" | "danger" | "success") {
 
 function onShowWithPromiseClick() {
   dialog.show({
+    type: "danger",
     innerHtml: "Are you sure you want to ignore the changes?",
     buttons: [{
       text: "Yes",
