@@ -77,12 +77,17 @@ import BaseGridCol from "@/components/BaseGridCol.vue";
 
 <style lang="less">
 .show-base-grid__grid-1 > div {
+@apply p-2;
   background-color: var(--green-5);
 }
+
 .show-base-grid__grid-2 > div {
+@apply p-2;
   background-color: var(--blue-5);
 }
+
 .show-base-grid__grid-3 > div {
+@apply p-2;
   background-color: var(--red-5);
 }
 </style>
