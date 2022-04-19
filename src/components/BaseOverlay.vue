@@ -18,6 +18,9 @@ const props = withDefaults(defineProps<{
   shader: true,
   visible: false
 });
+const emits = defineEmits<{
+  (e: "overlay-hidden", v: null): void
+}>();
 
 const overlayStyle = ref({
   "base-overlay--full-screen": false,
@@ -76,6 +79,7 @@ onUnmounted(() => {
 function onAfterLeave() {
   document.body.style.overflow = defaultBodyOverflow;
   overlayVisible.value = false;
+  emits("overlay-hidden", null);
 }
 </script>
 

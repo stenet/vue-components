@@ -12,6 +12,7 @@ interface Item extends DialogFullOptions {
   class: string;
   disabled: boolean;
   isLoading: boolean;
+  visible: boolean;
 }
 
 const items = ref<Item[]>([]);
@@ -23,6 +24,7 @@ function show(options: DialogFullOptions) {
     disabled: false,
     isLoading: false,
     icon: getIcon(options),
+    visible: true,
     class: `base-dialog__item--${options.type || "default"}`,
     ...options
   };
@@ -66,8 +68,11 @@ async function onButtonClick(item: Item, button: DialogButton) {
     }
   }
 
+  item.visible = false;
+}
+function onOverlayHidden(item: Item) {
   const indexOf = items.value.findIndex(i => i.key == item.key);
-  items.value.splice(indexOf, 1);
+  items.value.splice(indexOf, 1);  
 }
 </script>
 
@@ -79,7 +84,8 @@ async function onButtonClick(item: Item, button: DialogButton) {
     class="base-overlay-from-dialog-provider"
     :key="item.key"
     :delay="0"
-    :visible="true">
+    :visible="item.visible"
+    @overlay-hidden="onOverlayHidden(item)">
 
     <div
       class="base-dialog__item relative flex flex-col border rounded max-w-4xl shadow-2xl overflow-hidden"
