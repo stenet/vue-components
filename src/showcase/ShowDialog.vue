@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import { useDialog } from "@/composables/useDialog";
+import { useDialog } from "@/composables/use-dialog";
 
 const dialog = useDialog();
 
