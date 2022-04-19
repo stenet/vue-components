@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { ContentReadyEvent } from "devextreme/ui/button";
 import { provide, ref } from "vue";
-import { DialogProvider } from "@/components/DialogProvider";
-import type { DialogButton, DialogFullOptions } from "@/components/DialogProvider";
+import { DialogProvider } from "@/components/dialog-provider";
+import type { DialogButton, DialogFullOptions } from "@/components/dialog-provider";
 import BaseOverlay from "@/components/BaseOverlay.vue";
 import BaseLoadingBar from "@/components/BaseLoadingBar.vue";
 

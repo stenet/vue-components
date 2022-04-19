@@ -8,5 +8,6 @@ export { default as BaseShadowBox } from "./BaseShadowBox.vue";
 export { default as BaseSidebar } from "./BaseSidebar.vue";
 export { default as BaseToastProvider } from "./BaseToastProvider.vue";
 
-export * from "./DialogProvider";
-export * from "./ToastProvider";
+export * from "./dialog-provider";
+export * from "./grid-info-provider";
+export * from "./toast-provider";

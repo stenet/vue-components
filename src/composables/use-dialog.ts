@@ -1,5 +1,5 @@
 import { inject } from "vue";
-import { DialogProvider } from "@/components/DialogProvider";
+import { DialogProvider } from "@/components/dialog-provider";
 
 export function useDialog() {
   const dialogProvider: DialogProvider | undefined = inject(DialogProvider.name);

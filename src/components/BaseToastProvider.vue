@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, provide, ref } from "vue";
-import { ToastProvider } from "@/components/ToastProvider";
-import type { ToastOptions } from "@/components/ToastProvider";
+import { ToastProvider } from "@/components/toast-provider";
+import type { ToastOptions } from "@/components/toast-provider";
 
 const props = withDefaults(defineProps<{
   x?: "left" | "center" | "right";
