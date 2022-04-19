@@ -8,6 +8,7 @@ import ShowBaseOverlay from "@/showcase/ShowBaseOverlay.vue";
 import ShowBaseSidebar from "@/showcase/ShowBaseSidebar.vue";
 import ShowToast from "@/showcase/ShowToast.vue";
 import ShowDialog from "@/showcase/ShowDialog.vue";
+import ShowDx from "@/showcase/ShowDx.vue";
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import ShowDialog from "@/showcase/ShowDialog.vue";
     <show-base-sidebar></show-base-sidebar>
     <show-toast></show-toast>
     <show-dialog></show-dialog>
+    <show-dx></show-dx>
   </div>
 </template>
 
