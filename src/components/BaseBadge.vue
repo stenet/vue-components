@@ -5,14 +5,21 @@ const props = withDefaults(defineProps<{
   text?: string;
   icon?: string
   color?: string;
-  x?: "left" | "right"
+  x?: "left" | "right",
+  bounce?: boolean
 }>(), {
   color: "var(--red-2)",
-  x: "right"
+  x: "right",
+  bounce: false
 });
 
 const badgeClass = computed(() => {
-  return `base-badge__item--${props.x}`;
+  const r = [`base-badge__item--${props.x}`];
+  
+  if (props.bounce) {
+    r.push("base-badge__item--bounce");
+  }
+  return r;
 });
 
 const hasContent = computed(() => {
@@ -44,6 +51,10 @@ const hasContent = computed(() => {
 .base-badge__item {
   min-width: 1.25rem;
   background-color: v-bind("props.color");
+}
+
+.base-badge__item--bounce {
+@apply animate-bounce;
 }
 
 .base-badge__item--left {

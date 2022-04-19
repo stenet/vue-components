@@ -24,7 +24,7 @@ function onButton2Click() {
       <base-badge
         :text="text">
         <dx-button
-          text="Button with Badge"
+          text="Badge with Text"
           @click="onButton1Click()">
         </dx-button>
       </base-badge>
@@ -33,7 +33,7 @@ function onButton2Click() {
         :icon="icon"
         color="var(--blue-2)">
         <dx-button
-          text="Button with Badge"
+          text="Icon badge"
           @click="onButton2Click()">
         </dx-button>
       </base-badge>
@@ -43,7 +43,16 @@ function onButton2Click() {
         color="var(--orange-2)"
         x="left">
         <dx-button
-          text="Button with Badge">
+          text="Badge on left">
+        </dx-button>
+      </base-badge>
+
+      <base-badge
+        icon="fa-solid fa-key"
+        color="var(--green-2)"
+        :bounce="true">
+        <dx-button
+          text="Bouncing ;)">
         </dx-button>
       </base-badge>
     </div>
