@@ -2,49 +2,66 @@
 import { computed } from "vue";
 
 const props = withDefaults(defineProps<{
-  type?: "gray" | "blue" | "green" | "red" | "orange";
+  text?: string;
+  icon?: string
+  color?: string;
+  x?: "left" | "right"
 }>(), {
-  type: "gray"
+  color: "var(--red-2)",
+  x: "right"
 });
 
-const typeClass = computed(() => {
-  return `base-badge--${props.type}`;
+const badgeClass = computed(() => {
+  return `base-badge__item--${props.x}`;
+});
+
+const hasContent = computed(() => {
+  return !!props.icon || !!props.text;
 });
 </script>
 
 <template>
   <div
-    class="base-badge font-semibold text-xs px-2 py-1 rounded"
-    :class="typeClass">
-
+    class="base-badge inline relative">
+    <transition name="badge">
+      <div
+        v-if="hasContent"
+        class="base-badge__item absolute flex justify-center items-center rounded-xl px-1 py-0.5 -top-1.5 text-white text-xs transition"
+        :class="badgeClass">
+        <div v-if="props.text">
+          {{ text }}
+        </div>
+        <div v-if="props.icon">
+          <i :class="props.icon"></i>
+        </div>
+      </div>
+    </transition>
     <slot></slot>
-
   </div>
 </template>
 
 <style lang="less">
-.base-badge--gray {
-  background-color: var(--gray-5);
-  color: var(--gray-1);
+.base-badge__item {
+  min-width: 1.25rem;
+  background-color: v-bind("props.color");
 }
 
-.base-badge--blue {
-  background-color: var(--blue-5);
-  color: var(--blue-1);
+.base-badge__item--left {
+@apply ~ "-left-1.5";
 }
 
-.base-badge--green {
-  background-color: var(--green-5);
-  color: var(--green-1);
+.base-badge__item--right {
+@apply ~ "-right-1.5";
 }
 
-.base-badge--red {
-  background-color: var(--red-5);
-  color: var(--red-1);
+.badge-enter-active,
+.badge-leave-active {
+@apply transition;
 }
 
-.base-badge--orange {
-  background-color: var(--orange-5);
-  color: var(--orange-1);
+.badge-enter-from,
+.badge-leave-to {
+  opacity: 0;
+  transform: scale(.7);
 }
 </style>

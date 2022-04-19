@@ -1,5 +1,5 @@
 export { default as BaseAvatar } from "./BaseAvatar.vue";
-export { default as BaseBadge } from "./BaseBadge.vue";
+export { default as BaseTag } from "./BaseTag.vue";
 export { default as BaseDialogProvider } from "./BaseDialogProvider.vue";
 export { default as BaseLoadingBar } from "./BaseLoadingBar.vue";
 export { default as BaseNotification } from "./BaseNotification.vue";

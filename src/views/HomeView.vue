@@ -3,6 +3,7 @@ import ShowBaseLoadingBar from "@/showcase/ShowBaseLoadingBar.vue";
 import ShowBaseShadowBox from "@/showcase/ShowBaseShadowBox.vue";
 import ShowBaseAvatar from "@/showcase/ShowBaseAvatar.vue";
 import ShowBaseNotification from "@/showcase/ShowBaseNotification.vue";
+import ShowBaseTag from "@/showcase/ShowBaseTag.vue";
 import ShowBaseBadge from "@/showcase/ShowBaseBadge.vue";
 import ShowBaseOverlay from "@/showcase/ShowBaseOverlay.vue";
 import ShowBaseSidebar from "@/showcase/ShowBaseSidebar.vue";
@@ -18,6 +19,7 @@ import ShowDx from "@/showcase/ShowDx.vue";
     <show-base-shadow-box></show-base-shadow-box>
     <show-base-avatar></show-base-avatar>
     <show-base-notification></show-base-notification>
+    <show-base-tag></show-base-tag>
     <show-base-badge></show-base-badge>
     <show-base-overlay></show-base-overlay>
     <show-base-sidebar></show-base-sidebar>

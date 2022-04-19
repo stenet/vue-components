@@ -151,7 +151,7 @@ function onOverlayHidden(item: Item) {
 }
 
 .base-overlay-from-dialog-provider {
-  --anim-translate-y: 30px;
+  --anim-translate-y: 3rem;
   --anim-scale: .7;
 }
 
