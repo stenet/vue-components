@@ -71,10 +71,10 @@ async function onButtonClick(item: Item, button: DialogButton) {
     :visible="true">
 
     <div
-      class="base-dialog__item flex flex-col gap-4 border p-4 rounded max-w-4xl shadow-2xl"
+      class="base-dialog__item flex flex-col gap-8 border p-4 rounded max-w-4xl shadow-2xl"
       :class="item.class">
 
-      <div class="flex gap-4 items-center">
+      <div class="flex gap-4 items-center p-4">
         <i
           v-if="item.icon"
           class="text-4xl"
@@ -102,7 +102,8 @@ async function onButtonClick(item: Item, button: DialogButton) {
 
 <style lang="less">
 .base-dialog__item {
-  background-color: var(--gray-6);
+  min-width: 25rem;
+  background-color: white;
   border-color: var(--gray-5);
 }
 

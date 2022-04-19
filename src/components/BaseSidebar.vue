@@ -89,7 +89,7 @@ function onCloseClick() {
 <style lang="less">
 .base-sidebar {
   border-color: var(--gray-5);
-  background-color: var(--gray-6);
+  background-color: white;
   width: v-bind("props.width");
 }
 .base-overlay.base-overlay-from-sidebar {
