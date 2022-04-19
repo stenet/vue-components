@@ -31,7 +31,7 @@ const showHeader = computed(() => {
 
         <div
           v-if="props.subtitle"
-          class="base-shadow-box__subtitle text-sm">
+          class="base-shadow-box__subtitle">
           {{ props.subtitle }}
         </div>
       </div>

@@ -63,6 +63,7 @@ export interface DialogFullOptions extends DialogOptions {
 }
 export interface DialogButton {
   type?: "default" | "info" | "danger" | "success";
+  icon?: string;
   text: string;
   onClick(): void | Promise<any>;
 }

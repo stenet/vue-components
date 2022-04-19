@@ -113,11 +113,6 @@ function getIcon(options: ToastOptions) {
 @apply mb-4 bottom-0;
 }
 
-.base-toast__item {
-  border-color: var(--gray-4);
-  background-color: var(--gray-5);
-}
-
 .base-toast__item--left {
 @apply self-start;
 }
@@ -128,6 +123,11 @@ function getIcon(options: ToastOptions) {
 
 .base-toast__item--right {
 @apply self-end;
+}
+
+.base-toast__item {
+  border-color: var(--gray-4);
+  background-color: var(--gray-5);
 }
 
 .base-toast__item--info {

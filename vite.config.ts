@@ -20,7 +20,10 @@ export default defineConfig({
       formats: ["es"]
     },
     rollupOptions: {
-      external: ["vue"]
+      external: [
+        "vue",
+        "moment",
+        /^devextreme.*/]
     }
   }
 });

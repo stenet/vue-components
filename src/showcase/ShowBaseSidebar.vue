@@ -18,11 +18,15 @@ function onShowClick(xV: any) {
     </h2>
     <div>
       <div class="button-group">
-        <button
-          @click="onShowClick('right')">Show sidebar right</button>
+        <dx-button
+          text="Show sidebar right"
+          @click="onShowClick('right')">          
+        </dx-button>
         
-        <button
-          @click="onShowClick('left')">Show sidebar left</button>
+        <dx-button
+          text="Show sidebar left"
+          @click="onShowClick('left')">          
+        </dx-button>
       </div>
       
       <base-sidebar

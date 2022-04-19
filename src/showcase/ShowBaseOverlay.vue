@@ -29,17 +29,25 @@ function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, content
     </h2>
     <div>
       <div class="button-group">
-        <button
-          @click="onShowClick(true)">Show overlay with shader</button>
+        <dx-button
+          text="Show overlay with shader"
+          @click="onShowClick(true)">
+        </dx-button>
 
-        <button
-          @click="onShowClick(false)">Show overlay without shader</button>
+        <dx-button
+          text="Show overlay without shader"
+          @click="onShowClick(false)">
+        </dx-button>
         
-        <button
-          @click="onShowClick(true, false)">Show overlay inline</button>
+        <dx-button
+          text="Show overlay inline"
+          @click="onShowClick(true, false)">
+        </dx-button>
 
-        <button
-          @click="onShowClick(true, true, 0, 'center', 'bottom')">Show overlay without delay bottom</button>
+        <dx-button
+          text="Show overlay without delay bottom"
+          @click="onShowClick(true, true, 0, 'center', 'bottom')">
+        </dx-button>
       </div>
       
       <base-overlay

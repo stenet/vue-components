@@ -3,6 +3,7 @@ import { provide, ref } from "vue";
 import { DialogProvider } from "@/components/DialogProvider";
 import type { DialogButton, DialogFullOptions } from "@/components/DialogProvider";
 import BaseOverlay from "@/components/BaseOverlay.vue";
+import BaseLoadingBar from "@/components/BaseLoadingBar.vue";
 
 provide(DialogProvider.name, new DialogProvider(show));
 
@@ -10,6 +11,7 @@ interface Item extends DialogFullOptions {
   key: number;
   class: string;
   disabled: boolean;
+  isLoading: boolean;
 }
 
 const items = ref<Item[]>([]);
@@ -19,6 +21,7 @@ function show(options: DialogFullOptions) {
   const item: Item = {
     key: dialogIndex++,
     disabled: false,
+    isLoading: false,
     icon: getIcon(options),
     class: `base-dialog__item--${options.type || "default"}`,
     ...options
@@ -51,8 +54,16 @@ function getIcon(options: DialogFullOptions) {
 async function onButtonClick(item: Item, button: DialogButton) {
   const r = button.onClick();
   if (r?.then) {
-    item.disabled = true;
-    await r;
+    try {
+      item.disabled = true;
+      item.isLoading = true;
+      await r;
+    }
+    catch (ex) {
+      item.disabled = false;
+      item.isLoading = false;
+      throw ex;
+    }
   }
 
   const indexOf = items.value.findIndex(i => i.key == item.key);
@@ -71,10 +82,16 @@ async function onButtonClick(item: Item, button: DialogButton) {
     :visible="true">
 
     <div
-      class="base-dialog__item flex flex-col gap-8 border p-4 rounded max-w-4xl shadow-2xl"
+      class="base-dialog__item relative flex flex-col border rounded max-w-4xl shadow-2xl overflow-hidden"
       :class="item.class">
+      
+      <base-loading-bar 
+        class="absolute top-0 w-full"
+        v-if="item.isLoading"
+        :is-loading="true">
+      </base-loading-bar>
 
-      <div class="flex gap-4 items-center p-4">
+      <div class="flex gap-4 items-center p-8">
         <i
           v-if="item.icon"
           class="text-4xl"
@@ -86,14 +103,16 @@ async function onButtonClick(item: Item, button: DialogButton) {
         </div>
       </div>
 
-      <div class="base-dialog__buttons button-group self-end">
-        <button
+      <div class="base-dialog__buttons button-group self-end p-4 pt-0">
+        <dx-button
           v-for="btn in item.buttons"
           :key="btn.text"
           :disabled="item.disabled"
+          :icon="btn.icon"
+          :type="btn.type"
+          :text="btn.text"
           @click="onButtonClick(item, btn)">
-          {{ btn.text }}
-        </button>
+        </dx-button>
       </div>
 
     </div>
@@ -108,9 +127,8 @@ async function onButtonClick(item: Item, button: DialogButton) {
 }
 
 .base-overlay-from-dialog-provider {
-  --anim-translate-x: 30px;
   --anim-translate-y: 30px;
-  --anim-scale: .8;
+  --anim-scale: .7;
 }
 
 .base-dialog__item--info {

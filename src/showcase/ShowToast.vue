@@ -18,21 +18,25 @@ function onShowClick(type?: "info" | "danger" | "success") {
     </h2>
     <div class="flex flex-col gap-4">
       <div class="button-group">
-        <button
-          @click="onShowClick()">Show default toast
-        </button>
+        <dx-button
+          text="Show default toast"
+          @click="onShowClick()">
+        </dx-button>
 
-        <button
-          @click="onShowClick('info')">Show info toast
-        </button>
+        <dx-button
+          text="Show info toast"
+          @click="onShowClick('info')">
+        </dx-button>
 
-        <button
-          @click="onShowClick('danger')">Show danger toast
-        </button>
+        <dx-button
+          text="Show danger toast"
+          @click="onShowClick('danger')">
+        </dx-button>
 
-        <button
-          @click="onShowClick('success')">Show success toast
-        </button>
+        <dx-button
+          text="Show success toast"
+          @click="onShowClick('success')">
+        </dx-button>
       </div>
     </div>
   </div>

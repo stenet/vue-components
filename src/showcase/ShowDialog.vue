@@ -38,25 +38,30 @@ function onShowWithPromiseClick() {
     </h2>
     <div class="flex flex-col gap-4">
       <div class="button-group">
-        <button
-          @click="onShowClick()">Show default dialog
-        </button>
+        <dx-button
+          text="Show default dialog"
+          @click="onShowClick()">
+        </dx-button>
 
-        <button
-          @click="onShowClick('info')">Show info dialog
-        </button>
+        <dx-button
+          text="Show info dialog"
+          @click="onShowClick('info')">
+        </dx-button>
 
-        <button
-          @click="onShowClick('danger')">Show danger dialog
-        </button>
+        <dx-button
+          text="Show danger dialog"
+          @click="onShowClick('danger')">
+        </dx-button>
 
-        <button
-          @click="onShowClick('success')">Show success dialog
-        </button>
+        <dx-button
+          text="Show success dialog"
+          @click="onShowClick('success')">
+        </dx-button>
 
-        <button
-          @click="onShowWithPromiseClick()">Show with promise dialog
-        </button>
+        <dx-button
+          text="Show with promise dialog"
+          @click="onShowWithPromiseClick()">
+        </dx-button>
       </div>
     </div>
   </div>

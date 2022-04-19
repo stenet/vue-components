@@ -29,20 +29,23 @@ function onError() {
         :has-error="hasError"></base-loading-bar>
     </div>
     <div class="button-group mt-4">
-      <button
+      <dx-button
         v-if="!isLoading"
-        @click="onStart()">Start loading
-      </button>
+        text="Start loading"
+        @click="onStart()">
+      </dx-button>
 
-      <button
+      <dx-button
         v-if="isLoading"
-        @click="onFinish()">Finish
-      </button>
+        text="Finish"
+        @click="onFinish()">
+      </dx-button>
 
-      <button
+      <dx-button
         v-if="isLoading"
-        @click="onError()">Error
-      </button>
+        text="Error"
+        @click="onError()">
+      </dx-button>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@ html, body {
 @apply font-sans;
   color: var(--color);
   background-color: var(--background-color);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 body {
@@ -20,17 +20,6 @@ body {
 
   h3 {
   @apply text-xl mb-4;
-  }
-
-  button {
-  @apply flex items-center gap-2 rounded py-2 px-4 cursor-pointer transition min-h-full border;
-    background-color: white;
-    border-color: var(--gray-5);
-
-    &:not([disabled]):hover {
-      border-color: var(--gray-4);
-      background-color: var(--gray-6);
-    }
   }
 }
 

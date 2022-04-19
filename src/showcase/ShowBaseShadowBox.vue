@@ -42,13 +42,13 @@ import BaseShadowBox from "@/components/BaseShadowBox.vue";
         title="Title"
         subtitle="Subtitle">
         <template #toolbar>
-          <button>
-            <i class="fa-solid fa-plus"></i>
-            Toolbar
-          </button>
-          <button>
-            <i class="fa-solid fa-key"></i>
-          </button>
+          <dx-button
+            icon="fa-solid fa-plus"
+            text="Toolbar">
+          </dx-button>
+          <dx-button
+            icon="fa-solid fa-key">
+          </dx-button>
         </template>
         <div class="flex flex-col">
           <div>
