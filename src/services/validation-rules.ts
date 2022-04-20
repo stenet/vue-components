@@ -1,6 +1,6 @@
 ﻿import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import moment from "moment";
-import type { Composer } from "vue-i18n";
+import type { Composer, VueMessageType } from "vue-i18n";
 
 const rules: Record<string, ValidationCallback> = {};
 
@@ -163,4 +163,4 @@ export function validateRules(i18n: I18N, validators: Record<string, any>, ev: V
 export type ValidationCallback = (i18n: I18N, ev: ValidationCallbackData, params: ValidationParams) => boolean;
 type ValidationParams = Record<string, string | number>;
 
-type I18N = Composer;
+type I18N = Composer<unknown, unknown, unknown, VueMessageType>;
