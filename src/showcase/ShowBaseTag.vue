@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 import BaseTag from "@/components/BaseTag.vue";
+import { ref } from "vue";
+
+const orangeVisible = ref(true);
+
+function onOrangeRemoveClick() {
+  orangeVisible.value = false;
+}
 </script>
 
 <template>
@@ -12,7 +19,12 @@ import BaseTag from "@/components/BaseTag.vue";
       <base-tag type="blue">blue</base-tag>
       <base-tag type="green">green</base-tag>
       <base-tag type="red">red</base-tag>
-      <base-tag type="orange">orange</base-tag>
+      
+      <base-tag
+        v-if="orangeVisible"
+        type="orange"
+        :show-remove-button="true"
+        @remove-click="onOrangeRemoveClick()">orange</base-tag>
     </div>
   </div>
 </template>
