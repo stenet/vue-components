@@ -1,4 +1,5 @@
 import { createDevExpressPlugin } from "@/plugins/devextreme";
+import { createGlobalizationPlugin } from "@/plugins/globalization";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -15,6 +16,7 @@ const app = createApp(App);
 
 app
   .use(router)
-  .use(createDevExpressPlugin({}));
+  .use(createDevExpressPlugin({}))
+  .use(createGlobalizationPlugin());
 
 app.mount("#app");

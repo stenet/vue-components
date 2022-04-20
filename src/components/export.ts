@@ -2,6 +2,7 @@ export { default as BaseAvatar } from "./BaseAvatar.vue";
 export { default as BaseBadge } from "./BaseBadge.vue";
 export { default as BaseCard } from "./BaseCard.vue";
 export { default as BaseDialogProvider } from "./BaseDialogProvider.vue";
+export { default as BaseFormItem } from "./BaseFormItem.vue";
 export { default as BaseGrid } from "./BaseGrid.vue";
 export { default as BaseGridCol } from "./BaseGridCol.vue";
 export { default as BaseLoadingBar } from "./BaseLoadingBar.vue";

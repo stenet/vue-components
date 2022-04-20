@@ -11,6 +11,7 @@ import ShowBaseSidebar from "@/showcase/ShowBaseSidebar.vue";
 import ShowBaseGrid from "@/showcase/ShowBaseGrid.vue";
 import ShowToast from "@/showcase/ShowToast.vue";
 import ShowBaseDialog from "@/showcase/ShowBaseDialog.vue";
+import ShowBaseFormItem from "@/showcase/ShowBaseFormItem.vue";
 import ShowDx from "@/showcase/ShowDx.vue";
 </script>
 
@@ -28,6 +29,7 @@ import ShowDx from "@/showcase/ShowDx.vue";
     <show-base-grid></show-base-grid>
     <show-toast></show-toast>
     <show-base-dialog></show-base-dialog>
+    <show-base-form-item></show-base-form-item>
     <show-dx></show-dx>
   </div>
 </template>
