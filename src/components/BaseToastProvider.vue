@@ -90,7 +90,7 @@ function getIcon(options: ToastOptions) {
     <transition-group :name="transitionGroupName">
       <div
         v-for="item in items"
-        class="base-toast-provider__item flex gap-4 items-center rounded border p-4 mx-4 shadow-xl max-w-4xl"
+        class="base-toast-provider__item flex gap-4 items-center rounded border border-l-4 p-4 mx-4 shadow-xl max-w-4xl"
         :key="item.key"
         :class="item.class">
 
@@ -136,19 +136,19 @@ function getIcon(options: ToastOptions) {
 }
 
 .base-toast-provider__item--info {
-  border-color: var(--blue-5);
+  border-left-color: var(--blue-0);
   background-color: var(--blue-7);
   color: var(--blue-0);
 }
 
 .base-toast-provider__item--danger {
-  border-color: var(--red-5);
+  border-left-color: var(--red-0);
   background-color: var(--red-7);
   color: var(--red-0);
 }
 
 .base-toast-provider__item--success {
-  border-color: var(--green-5);
+  border-left-color: var(--green-0);
   background-color: var(--green-7);
   color: var(--green-0);
 }
