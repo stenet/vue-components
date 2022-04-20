@@ -14,7 +14,7 @@ const loadPanelVisible = ref(false);
 function onShowLoadingClick() {
   loadPanelVisible.value = true;
   
-  setTimeout(() => loadPanelVisible.value = false, 40000);
+  setTimeout(() => loadPanelVisible.value = false, 4000);
 }
 
 </script>
