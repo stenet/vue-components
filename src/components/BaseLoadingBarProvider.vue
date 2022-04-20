@@ -49,7 +49,7 @@ function onLoadingFinished() {
     class="base-loading-bar-provider inline-block relative">
     <base-loading-bar
       v-if="visible"
-      class="top-0 w-full"
+      class="top-0 w-full z-30"
       :class="loadingBarClass"
       :is-loading="loadingBarProvider.isWorking()"
       :has-error="loadingBarProvider.hasError"
