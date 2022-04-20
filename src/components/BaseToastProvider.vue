@@ -132,6 +132,7 @@ function getIcon(options: ToastOptions) {
 
 .base-toast-provider__item {
   border-color: var(--gray-5);
+  border-left-color: var(--gray-0);
   background-color: white;
 }
 
