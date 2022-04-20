@@ -13,13 +13,20 @@ function onShowClick(type?: "info" | "danger" | "success") {
   });
 }
 
+function onShowOkClick() {
+  dialog.showOk({
+    innerHtml: "Your order has been proceeded"
+  });
+}
+
 function onShowWithPromiseClick() {
   dialog.show({
     type: "danger",
     innerHtml: "Are you sure you want to ignore the changes?",
     buttons: [{
       text: "Yes",
-      onClick: () => {}
+      onClick: () => {
+      }
     }, {
       text: "Save",
       onClick: () => {
@@ -29,7 +36,7 @@ function onShowWithPromiseClick() {
             toast.show({
               type: "success",
               innerHtml: "Data have been saved successfully :)"
-            })
+            });
           }, 2000);
         });
       }
@@ -63,6 +70,11 @@ function onShowWithPromiseClick() {
         <dx-button
           text="Show success dialog"
           @click="onShowClick('success')">
+        </dx-button>
+
+        <dx-button
+          text="Show OK"
+          @click="onShowOkClick()">
         </dx-button>
 
         <dx-button

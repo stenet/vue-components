@@ -114,7 +114,7 @@ function onOverlayHidden(item: Item) {
         :is-loading="true">
       </base-loading-bar>
 
-      <div class="flex gap-4 items-center p-8">
+      <div class="flex gap-6 items-center p-8">
         <i
           v-if="item.icon"
           class="text-4xl"

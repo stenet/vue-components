@@ -10,7 +10,28 @@ export class DialogProvider {
     
     this._callback(options);
   }
+  showOk(options: DialogOptions): Promise<void> {
+    if (!options.icon) {
+      options.icon = "fa-solid fa-circle-info";
+    }
+
+    return new Promise((resolve) => {
+      this.show({
+        ...options,
+        buttons: [{
+          text: "Ok",
+          onClick: () => {
+            resolve();
+          }
+        }]
+      })
+    });
+  }
   showYesNo(options: DialogOptions): Promise<"yes" | "no"> {
+    if (!options.icon) {
+      options.icon = "fa-solid fa-circle-question";
+    }
+
     return new Promise((resolve) => {
       this.show({
         ...options,
@@ -29,6 +50,10 @@ export class DialogProvider {
     });
   }
   showYesNoCancel(options: DialogOptions): Promise<"yes" | "no" | "cancel"> {
+    if (!options.icon) {
+      options.icon = "fa-solid fa-circle-question";
+    }
+    
     return new Promise((resolve) => {
       this.show({
         ...options,
