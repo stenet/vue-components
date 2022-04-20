@@ -1,4 +1,4 @@
-﻿export class LoadingInfo {
+﻿export class LoadingBarProvider {
   private loadingCount = 0;
   private savingCount = 0;
 

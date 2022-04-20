@@ -9,6 +9,10 @@ const props = withDefaults(defineProps<{
   color: "var(--blue-2)"
 });
 
+const emits = defineEmits<{
+  (e: "finished", v: null): void
+}>();
+
 const loader = ref<HTMLElement>();
 let loadingAnimation: Animation | undefined;
 let finishAnimation: Animation | undefined;
@@ -70,6 +74,8 @@ function getColor() {
 onMounted(() => {
   loadingAnimation = createLoadingAnimation();
   finishAnimation = createFinishAnimation();
+  
+  finishAnimation.onfinish = () => emits("finished", null);
 
   if (props.isLoading) {
     start();

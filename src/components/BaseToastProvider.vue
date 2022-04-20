@@ -18,7 +18,7 @@ const transitionGroupName = computed(() => {
 });
 const containerClass = computed(() => {
   const r: Record<string, boolean> = {};
-  r[`base-toast__container--${props.y}`] = true;
+  r[`base-toast-provider__container--${props.y}`] = true;
 
   return r;
 });
@@ -37,7 +37,7 @@ function show(options: ToastOptions) {
   const item: Item = {
     key: toastIndex++,
     icon: getIcon(options),
-    class: `base-toast__item--${props.x} base-toast__item--${options.type || "default"}`,
+    class: `base-toast-provider__item--${props.x} base-toast-provider__item--${options.type || "default"}`,
     innerHtml: options.innerHtml
   };
 
@@ -79,13 +79,13 @@ function getIcon(options: ToastOptions) {
   <slot></slot>
 
   <div
-    class="base-toast__container flex flex-col gap-4 fixed w-full pointer-events-none"
+    class="base-toast-provider__container flex flex-col gap-4 fixed w-full pointer-events-none"
     :class="containerClass">
 
     <transition-group :name="transitionGroupName">
       <div
         v-for="item in items"
-        class="base-toast__item flex gap-4 items-center rounded border p-4 mx-4 shadow-xl max-w-4xl"
+        class="base-toast-provider__item flex gap-4 items-center rounded border p-4 mx-4 shadow-xl max-w-4xl"
         :key="item.key"
         :class="item.class">
 
@@ -96,7 +96,7 @@ function getIcon(options: ToastOptions) {
 
         <div
           v-html="item.innerHtml"
-          class="base-toast__content">
+          class="base-toast-provider__content">
         </div>
       </div>
     </transition-group>
@@ -105,44 +105,44 @@ function getIcon(options: ToastOptions) {
 </template>
 
 <style lang="less">
-.base-toast__container--top {
+.base-toast-provider__container--top {
 @apply mt-4 top-0;
 }
 
-.base-toast__container--bottom {
+.base-toast-provider__container--bottom {
 @apply mb-4 bottom-0;
 }
 
-.base-toast__item--left {
+.base-toast-provider__item--left {
 @apply self-start;
 }
 
-.base-toast__item--center {
+.base-toast-provider__item--center {
 @apply self-center;
 }
 
-.base-toast__item--right {
+.base-toast-provider__item--right {
 @apply self-end;
 }
 
-.base-toast__item {
+.base-toast-provider__item {
   border-color: var(--gray-5);
   background-color: white;
 }
 
-.base-toast__item--info {
+.base-toast-provider__item--info {
   border-color: var(--blue-4);
   background-color: var(--blue-5);
   color: var(--blue-0);
 }
 
-.base-toast__item--danger {
+.base-toast-provider__item--danger {
   border-color: var(--red-4);
   background-color: var(--red-5);
   color: var(--red-0);
 }
 
-.base-toast__item--success {
+.base-toast-provider__item--success {
   border-color: var(--green-4);
   background-color: var(--green-5);
   color: var(--green-0);

@@ -1,5 +1,5 @@
-﻿import { useDataSavedEventBus } from "./use-data-saved-event";
-import { useLoadingInfo } from "./use-loading-info";
+﻿import { useLoadingBar } from "@/composables/use-loading-bar";
+import { useDataSavedEventBus } from "./use-data-saved-event";
 import type { RequestInstance } from "@/services/request-factory";
 import type { GetOptions } from "@/services/web-api-request";
 import { webApiDelete, webApiGet, webApiPost } from "@/services/web-api-request";
@@ -19,8 +19,8 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
   const error = ref<string | null>(null);
   const data = ref<Partial<T>>({});
 
-  const loadingInfo = options.updateLoadingInfo
-    ? useLoadingInfo()
+  const loadingBarProvider = options.updateLoadingInfo
+    ? useLoadingBar()
     : null;
 
   watch(() => unref(options.id), () => loadItem());
@@ -28,7 +28,7 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
   const loadItem = async () => {
     await runAsync(isLoading, async () => {
       try {
-        loadingInfo?.beginLoading();
+        loadingBarProvider?.beginLoading();
 
         data.value = <any>await webApiGet<T>({
           url: options.url,
@@ -39,10 +39,10 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
 
         isLoaded.value = true;
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endLoading();
+        loadingBarProvider?.endLoading();
       }
     });
   };
@@ -52,7 +52,7 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
     }
 
     await runAsync(isSaving, async () => {
-      loadingInfo?.beginSaving();
+      loadingBarProvider?.beginSaving();
 
       try {
         data.value = <any>await webApiPost<T>({
@@ -66,16 +66,16 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
           url: options.url
         });
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endSaving();
+        loadingBarProvider?.endSaving();
       }
     });
   };
   const deleteItem = async () => {
     await runAsync(isSaving, async () => {
-      loadingInfo?.beginSaving();
+      loadingBarProvider?.beginSaving();
 
       try {
         await webApiDelete<T>({
@@ -91,10 +91,10 @@ export function useWebApiData<T>(options: WebApiDataCreateOptions) {
           url: options.url
         });
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endSaving();
+        loadingBarProvider?.endSaving();
       }
     });
   };

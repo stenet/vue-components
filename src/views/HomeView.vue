@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ShowBaseLoadingBar from "@/showcase/ShowBaseLoadingBar.vue";
+import ShowBaseLoadingBarProvider from "@/showcase/ShowBaseLoadingBarProvider.vue";
 import ShowBaseCard from "@/showcase/ShowBaseCard.vue";
 import ShowBaseAvatar from "@/showcase/ShowBaseAvatar.vue";
 import ShowBaseNotification from "@/showcase/ShowBaseNotification.vue";
@@ -17,6 +18,7 @@ import ShowDx from "@/showcase/ShowDx.vue";
 
 <template>
   <div class="flex flex-col p-4 gap-8">
+    <show-base-loading-bar-provider></show-base-loading-bar-provider>
     <show-base-loading-bar></show-base-loading-bar>
     <show-base-card></show-base-card>
     <show-base-avatar></show-base-avatar>

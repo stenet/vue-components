@@ -28,7 +28,7 @@ function show(options: DialogFullOptions) {
     icon: getIcon(options),
     visible: true,
     focused: false,
-    class: `base-dialog__item--${options.type || "default"}`,
+    class: `base-dialog-provider__item--${options.type || "default"}`,
     ...options
   };
 
@@ -105,7 +105,7 @@ function onOverlayHidden(item: Item) {
     @overlay-hidden="onOverlayHidden(item)">
 
     <div
-      class="base-dialog__item relative flex flex-col border rounded max-w-4xl shadow-2xl overflow-hidden"
+      class="base-dialog-provider__item relative flex flex-col border rounded max-w-4xl shadow-2xl overflow-hidden"
       :class="item.class">
       
       <base-loading-bar 
@@ -122,11 +122,11 @@ function onOverlayHidden(item: Item) {
 
         <div
           v-html="item.innerHtml"
-          class="base-dialog__content flex-grow">
+          class="base-dialog-provider__content flex-grow">
         </div>
       </div>
 
-      <div class="base-dialog__buttons button-group self-end p-4 pt-0">
+      <div class="base-dialog-provider__buttons button-group self-end p-4 pt-0">
         <template v-for="btn in item.buttons" :key="btn.text">
           <dx-button
             :disabled="item.disabled"
@@ -144,30 +144,30 @@ function onOverlayHidden(item: Item) {
 </template>
 
 <style lang="less">
-.base-dialog__item {
-  min-width: 25rem;
-  background-color: white;
-  border-color: var(--gray-5);
-}
-
 .base-overlay-from-dialog-provider {
   --anim-translate-y: 3rem;
   --anim-scale: .7;
 }
 
-.base-dialog__item--info {
+.base-dialog-provider__item {
+  min-width: 25rem;
+  background-color: white;
+  border-color: var(--gray-5);
+}
+
+.base-dialog-provider__item--info {
   i {
     color: var(--blue-0);
   }
 }
 
-.base-dialog__item--danger {
+.base-dialog-provider__item--danger {
   i {
     color: var(--red-0);
   }
 }
 
-.base-dialog__item--success {
+.base-dialog-provider__item--success {
   i {
     color: var(--green-0);
   }

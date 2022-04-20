@@ -1,5 +1,5 @@
-﻿import { useDataSavedEventBus } from "./use-data-saved-event";
-import { useLoadingInfo } from "./use-loading-info";
+﻿import { useLoadingBar } from "@/composables/use-loading-bar";
+import { useDataSavedEventBus } from "./use-data-saved-event";
 import type { RequestInstance } from "@/services/request-factory";
 import { webApiDelete, webApiGet, webApiPost } from "@/services/web-api-request";
 import type { GetOptions } from "@/services/web-api-request";
@@ -31,8 +31,8 @@ export function useDataSource<T>(options: DataSourceCreateOptions<T>) {
 function createDataStore<T>(options: DataSourceCreateOptions<T>) {
   let initialLoadingDone = false;
 
-  const loadingInfo = options.updateLoadingInfo
-    ? useLoadingInfo()
+  const loadingBarProvider = options.updateLoadingInfo
+    ? useLoadingBar()
     : null;
 
   return new CustomStore({
@@ -72,7 +72,7 @@ function createDataStore<T>(options: DataSourceCreateOptions<T>) {
         }
       }
 
-      loadingInfo?.beginLoading();
+      loadingBarProvider?.beginLoading();
 
       try {
         const getOptions = getLoadGetOptions(options, loadOptions);
@@ -137,14 +137,14 @@ function createDataStore<T>(options: DataSourceCreateOptions<T>) {
           return result;
         }
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endLoading();
+        loadingBarProvider?.endLoading();
       }
     },
     insert: async (values) => {
-      loadingInfo?.beginSaving();
+      loadingBarProvider?.beginSaving();
 
       try {
         return await webApiPost({
@@ -154,14 +154,14 @@ function createDataStore<T>(options: DataSourceCreateOptions<T>) {
           data: values
         });
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endSaving();
+        loadingBarProvider?.endSaving();
       }
     },
     update: async (key, values) => {
-      loadingInfo?.beginSaving();
+      loadingBarProvider?.beginSaving();
 
       try {
         const data = Object.assign(values);
@@ -174,14 +174,14 @@ function createDataStore<T>(options: DataSourceCreateOptions<T>) {
           data
         });
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endSaving();
+        loadingBarProvider?.endSaving();
       }
     },
     remove: async (key) => {
-      loadingInfo?.beginSaving();
+      loadingBarProvider?.beginSaving();
 
       try {
         return await webApiDelete({
@@ -190,10 +190,10 @@ function createDataStore<T>(options: DataSourceCreateOptions<T>) {
           id: key
         });
       } catch (ex) {
-        loadingInfo?.errorOccured();
+        loadingBarProvider?.errorOccured();
         throw ex;
       } finally {
-        loadingInfo?.endSaving();
+        loadingBarProvider?.endSaving();
       }
     }
   });

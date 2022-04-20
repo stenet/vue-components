@@ -6,6 +6,7 @@ export { default as BaseFormItem } from "./BaseFormItem.vue";
 export { default as BaseGrid } from "./BaseGrid.vue";
 export { default as BaseGridCol } from "./BaseGridCol.vue";
 export { default as BaseLoadingBar } from "./BaseLoadingBar.vue";
+export { default as BaseLoadingBarProvider } from "./BaseLoadingBarProvider.vue";
 export { default as BaseNotification } from "./BaseNotification.vue";
 export { default as BaseOverlay } from "./BaseOverlay.vue";
 export { default as BaseSidebar } from "./BaseSidebar.vue";
