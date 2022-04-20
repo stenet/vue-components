@@ -126,8 +126,8 @@ function getIcon(options: ToastOptions) {
 }
 
 .base-toast__item {
-  border-color: var(--gray-4);
-  background-color: var(--gray-5);
+  border-color: var(--gray-5);
+  background-color: white;
 }
 
 .base-toast__item--info {
