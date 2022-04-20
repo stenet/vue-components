@@ -21,7 +21,7 @@ function onShowClick(type?: "info" | "danger" | "success", icon?: string) {
       <div class="flex flex-wrap gap-1">
         <dx-button
           text="Show default toast"
-          @click="onShowClick(null, 'fa-solid fa-key')">
+          @click="onShowClick(undefined, 'fa-solid fa-key')">
         </dx-button>
 
         <dx-button

@@ -11,7 +11,7 @@ const emits = defineEmits<{
 const validationGroup = ref<DxValidationGroup>();
 const toast = useToast();
 
-const onSubmit = (ev: SubmitEvent) => {
+const onSubmit = () => {
   emits("submit", null);
 };
 
@@ -41,7 +41,7 @@ defineExpose<BaseFormExpose>({
 
 <template>
   <dx-validation-group ref="validationGroup">
-    <form @submit.prevent.stop="onSubmit($event)">
+    <form @submit.prevent.stop="onSubmit()">
       <button type="submit" class="absolute invisible"></button>
       <slot></slot>
     </form>

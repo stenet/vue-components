@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && vue-tsc --emitDeclarationOnly",
+    "git": "vue-tsc --noEmit && vite build --config=vite-git.config.ts",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
@@ -26,8 +27,16 @@
     "@vueuse/core": "^8.2.6",
     "devextreme": "^21.2.7",
     "devextreme-vue": "^21.2.7",
+    "moment": "^2.29.x",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-free": "^6.x",
+    "@vueuse/core": "^8.2.6",
+    "devextreme": "*",
+    "devextreme-vue": "*",
     "moment": "^2.29.3",
-    "normalize.css": "^8.0.1",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14"
   },

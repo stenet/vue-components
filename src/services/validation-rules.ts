@@ -131,6 +131,13 @@ registerValidationRule("dateInFuture", (ev) => {
   return true;
 });
 
+export function getValidationRule(name: string) {
+  return rules[name];
+}
+export function hasValidationRule(name: string) {
+  return !!rules[name];
+}
+
 export function registerValidationRule(name: string, callback: ValidationCallback) {
   rules[name] = callback;
 }
