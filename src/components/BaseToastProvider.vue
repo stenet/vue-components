@@ -136,20 +136,20 @@ function getIcon(options: ToastOptions) {
 }
 
 .base-toast-provider__item--info {
-  border-color: var(--blue-4);
-  background-color: var(--blue-6);
+  border-color: var(--blue-5);
+  background-color: var(--blue-7);
   color: var(--blue-0);
 }
 
 .base-toast-provider__item--danger {
-  border-color: var(--red-4);
-  background-color: var(--red-6);
+  border-color: var(--red-5);
+  background-color: var(--red-7);
   color: var(--red-0);
 }
 
 .base-toast-provider__item--success {
-  border-color: var(--green-4);
-  background-color: var(--green-6);
+  border-color: var(--green-5);
+  background-color: var(--green-7);
   color: var(--green-0);
 }
 
