@@ -55,6 +55,15 @@ function onButton2Click() {
           text="Bouncing ;)">
         </dx-button>
       </base-badge>
+
+      <base-badge
+          icon="fa-solid fa-key"
+          color="var(--green-2)"
+          :pulse="true">
+        <dx-button
+            text="Pulsing ;)">
+        </dx-button>
+      </base-badge>
     </div>
   </div>
 </template>

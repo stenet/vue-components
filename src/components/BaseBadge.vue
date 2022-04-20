@@ -6,19 +6,24 @@ const props = withDefaults(defineProps<{
   icon?: string
   color?: string;
   x?: "left" | "right",
-  bounce?: boolean
+  bounce?: boolean,
+  pulse?: boolean,
 }>(), {
   color: "var(--red-2)",
   x: "right",
-  bounce: false
+  bounce: false,
+  pulse: false
 });
 
 const badgeClass = computed(() => {
   const r = [`base-badge__item--${props.x}`];
-  
+
   if (props.bounce) {
     r.push("base-badge__item--bounce");
+  } else if (props.pulse) {
+    r.push("base-badge__item--pulse");
   }
+
   return r;
 });
 
@@ -29,12 +34,12 @@ const hasContent = computed(() => {
 
 <template>
   <div
-    class="base-badge inline relative">
+      class="base-badge inline relative">
     <transition name="badge">
       <div
-        v-if="hasContent"
-        class="base-badge__item absolute flex justify-center items-center rounded-xl px-1 py-0.5 -top-1.5 text-white text-xs transition"
-        :class="badgeClass">
+          v-if="hasContent"
+          class="base-badge__item absolute flex justify-center items-center rounded-xl px-1 py-0.5 -top-1.5 text-white text-xs transition"
+          :class="badgeClass">
         <div v-if="props.text">
           {{ text }}
         </div>
@@ -55,6 +60,10 @@ const hasContent = computed(() => {
 
 .base-badge__item--bounce {
 @apply animate-bounce;
+}
+
+.base-badge__item--pulse {
+@apply animate-pulse;
 }
 
 .base-badge__item--left {
