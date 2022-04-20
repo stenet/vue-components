@@ -3,6 +3,9 @@ import { validateRules } from "@/services/validation-rules";
 import type { ValueChangedEvent } from "devextreme/ui/text_box";
 import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = withDefaults(defineProps<{
   type?: any;
@@ -46,14 +49,14 @@ function onValidate(ev: ValidationCallbackData) {
   }
   
   if (props.required) {
-    if (!validateRules({ required: true }, ev)) {
+    if (!validateRules(t,{ required: true }, ev)) {
       updateMessage();
       return false;
     }
   }
 
   if (props.rules) {
-    if (!validateRules(props.rules, ev)) {
+    if (!validateRules(t, props.rules, ev)) {
       updateMessage();
       return false;
     }

@@ -24,6 +24,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         "vue",
+        "vue-i18n",
         "@vueuse/core",
         "moment",
         /^devextreme.*/]

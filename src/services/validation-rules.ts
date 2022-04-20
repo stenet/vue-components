@@ -1,18 +1,19 @@
-﻿import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
+﻿import type { Translate } from "@/i18n";
+import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import moment from "moment";
 
 const rules: Record<string, ValidationCallback> = {};
 
-registerValidationRule("required", (ev) => {
+registerValidationRule("required", (t, ev) => {
   if (ev.value == void (0) || ev.value === "") {
-    ev.rule.message = "Required";
+    ev.rule.message = "required"; //t("required");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("stringLength", (ev, params) => {
+registerValidationRule("stringLength", (t, ev, params) => {
   if (params.min && (ev.value?.toString() || "").length < params.min) {
     ev.rule.message = `Min. length = ${params.min}`;
     return false;
@@ -26,7 +27,7 @@ registerValidationRule("stringLength", (ev, params) => {
   return true;
 });
 
-registerValidationRule("alphanumeric", (ev) => {
+registerValidationRule("alphanumeric", (t, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -41,7 +42,7 @@ registerValidationRule("alphanumeric", (ev) => {
   return true;
 });
 
-registerValidationRule("numeric", (ev) => {
+registerValidationRule("numeric", (t, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -56,7 +57,7 @@ registerValidationRule("numeric", (ev) => {
   return true;
 });
 
-registerValidationRule("email", (ev) => {
+registerValidationRule("email", (t, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -72,7 +73,7 @@ registerValidationRule("email", (ev) => {
   return true;
 });
 
-registerValidationRule("password", (ev) => {
+registerValidationRule("password", (t, ev) => {
   const value = <string>ev.value;
   if (!value) {
     return true;
@@ -101,7 +102,7 @@ registerValidationRule("password", (ev) => {
   return true;
 });
 
-registerValidationRule("dateInPast", (ev) => {
+registerValidationRule("dateInPast", (t, ev) => {
   const value = <Date><any>ev.value;
   if (!value) {
     return true;
@@ -116,7 +117,7 @@ registerValidationRule("dateInPast", (ev) => {
   return true;
 });
 
-registerValidationRule("dateInFuture", (ev) => {
+registerValidationRule("dateInFuture", (t, ev) => {
   const value = <Date><any>ev.value;
   if (!value) {
     return true;
@@ -142,7 +143,7 @@ export function registerValidationRule(name: string, callback: ValidationCallbac
   rules[name] = callback;
 }
 
-export function validateRules(validators: Record<string, any>, ev: ValidationCallbackData) {
+export function validateRules(t: Translate, validators: Record<string, any>, ev: ValidationCallbackData) {
   for (const key in validators) {
     const params = validators[key];
     const rule = rules[key];
@@ -150,7 +151,7 @@ export function validateRules(validators: Record<string, any>, ev: ValidationCal
       continue;
     }
 
-    const r = rule(ev, params || {});
+    const r = rule(t, ev, params || {});
     if (!r) {
       return r;
     }
@@ -159,4 +160,5 @@ export function validateRules(validators: Record<string, any>, ev: ValidationCal
   return true;
 }
 
-export type ValidationCallback = (ev: ValidationCallbackData, params: Record<string, string | number>) => boolean;
+export type ValidationCallback = (t: Translate, ev: ValidationCallbackData, params: ValidationParams) => boolean;
+type ValidationParams = Record<string, string | number>;

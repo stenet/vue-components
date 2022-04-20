@@ -5,3 +5,4 @@ export * from "./components/export";
 export * from "./composables/export";
 export * from "./plugins/export";
 export * from "./services/export";
+export * from "./i18n";
