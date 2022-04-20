@@ -126,7 +126,7 @@ function onOverlayHidden(item: Item) {
         </div>
       </div>
 
-      <div class="base-dialog-provider__buttons button-group self-end p-4 pt-0">
+      <div class="base-dialog-provider__buttons flex flex-row gap-1 self-end p-4 pt-0">
         <template v-for="btn in item.buttons" :key="btn.text">
           <dx-button
             :disabled="item.disabled"

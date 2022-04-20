@@ -28,7 +28,7 @@ function onShowClick(shaderV: boolean, fullscreenV = true, delayV = 200, content
       base-overlay
     </h2>
     <div>
-      <div class="button-group">
+      <div class="flex flex-wrap gap-1">
         <dx-button
           text="Show overlay with shader"
           @click="onShowClick(true)">

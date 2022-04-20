@@ -51,7 +51,7 @@ function onShowWithPromiseClick() {
       useDialog.show
     </h2>
     <div class="flex flex-col gap-4">
-      <div class="button-group">
+      <div class="flex flex-wrap gap-1">
         <dx-button
           text="Show default dialog"
           @click="onShowClick()">

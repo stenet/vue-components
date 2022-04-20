@@ -17,7 +17,7 @@ function onShowClick(xV: any) {
       base-sidebar
     </h2>
     <div>
-      <div class="button-group">
+      <div class="flex flex-wrap gap-1">
         <dx-button
           text="Show sidebar right"
           @click="onShowClick('right')">          

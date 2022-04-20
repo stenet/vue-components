@@ -36,7 +36,7 @@ const showHeader = computed(() => {
         </div>
       </div>
       
-      <div class="base-card__toolbar button-group">
+      <div class="base-card__toolbar flex flex-row flex-wrap gap-1 self-start">
         <slot name="toolbar"></slot>
       </div>
 

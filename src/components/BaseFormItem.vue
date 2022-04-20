@@ -91,6 +91,12 @@ function onValidate(ev: ValidationCallbackData) {
   grid-template-columns: minmax(150px, auto) 1fr;
 }
 
+@media (max-width: 575px) {
+  .base-form-item {
+    grid-template-columns: 1fr;
+  }
+}
+
 .base-form-item--no-label {
   grid-template-columns: 1fr;
 }

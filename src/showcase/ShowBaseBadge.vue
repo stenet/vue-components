@@ -20,7 +20,7 @@ function onButton2Click() {
     <h2>
       base-badge
     </h2>
-    <div class="flex gap-4">
+    <div class="flex flex-wrap gap-4">
       <base-badge
         :text="text">
         <dx-button

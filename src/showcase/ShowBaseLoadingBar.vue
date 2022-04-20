@@ -28,7 +28,7 @@ function onError() {
         :is-loading="isLoading"
         :has-error="hasError"></base-loading-bar>
     </div>
-    <div class="button-group mt-4">
+    <div class="flex flex-wrap gap-1 mt-4">
       <dx-button
         v-if="!isLoading"
         text="Start loading"
