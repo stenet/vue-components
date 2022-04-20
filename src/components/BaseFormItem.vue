@@ -71,8 +71,8 @@ function onValidate(ev: ValidationCallbackData) {
     <div>
       <component
           :is="props.type"
+          :value="props.modelValue"
           v-bind="others"
-          v-model="props.modelValue"
           @valueChanged="onValueChanged($event)">
         <dx-validator>
           <dx-custom-rule

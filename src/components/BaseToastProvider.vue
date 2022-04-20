@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<{
   y: "bottom"
 });
 
-provide(ToastProvider.name, new ToastProvider(show));
+provide(ToastProvider.name, new ToastProvider(show, clearAll));
 
 const transitionGroupName = computed(() => {
   return `toast-${props.y}`;
@@ -49,8 +49,13 @@ function show(options: ToastOptions) {
 
   setTimeout(() => {
     const indexOf = items.value.findIndex(i => i.key == item.key);
-    items.value.splice(indexOf, 1);
+    if (indexOf >= 0) {
+      items.value.splice(indexOf, 1);
+    }
   }, options.timeout || 3000);
+}
+function clearAll() {
+  items.value.splice(0, items.value.length);
 }
 function getIcon(options: ToastOptions) {
   if (options.icon) {
@@ -132,19 +137,19 @@ function getIcon(options: ToastOptions) {
 
 .base-toast-provider__item--info {
   border-color: var(--blue-4);
-  background-color: var(--blue-5);
+  background-color: var(--blue-6);
   color: var(--blue-0);
 }
 
 .base-toast-provider__item--danger {
   border-color: var(--red-4);
-  background-color: var(--red-5);
+  background-color: var(--red-6);
   color: var(--red-0);
 }
 
 .base-toast-provider__item--success {
   border-color: var(--green-4);
-  background-color: var(--green-5);
+  background-color: var(--green-6);
   color: var(--green-0);
 }
 

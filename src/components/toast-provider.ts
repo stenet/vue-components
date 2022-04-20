@@ -1,10 +1,14 @@
 export class ToastProvider {
   constructor(
-    private _callback: {(options: ToastOptions): void}
+    private _showCallback: {(options: ToastOptions): void},
+    private _clearAllCallback: {(): void}
   ) {}
   
   show(options: ToastOptions) {
-    this._callback(options);
+    this._showCallback(options);
+  }
+  clearAll() {
+    this._clearAllCallback();
   }
 }
 
