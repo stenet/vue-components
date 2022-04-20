@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import BaseShadowBox from "@/components/BaseShadowBox.vue";
+import BaseCard from "@/components/BaseCard.vue";
 </script>
 
 <template>
   <div class="flex flex-col">
     <h2>
-      base-shadow-box
+      base-card
     </h2>
     <div class="flex flex-col gap-4">
-      <base-shadow-box>
+      <base-card>
         <div class="flex flex-col">
           <div>
             Row 1
@@ -20,9 +20,9 @@ import BaseShadowBox from "@/components/BaseShadowBox.vue";
             Row 3
           </div>
         </div>
-      </base-shadow-box>
+      </base-card>
 
-      <base-shadow-box
+      <base-card
         title="Title"
         subtitle="Subtitle">
         <div class="flex flex-col">
@@ -36,9 +36,9 @@ import BaseShadowBox from "@/components/BaseShadowBox.vue";
             Row 3
           </div>
         </div>
-      </base-shadow-box>
+      </base-card>
 
-      <base-shadow-box
+      <base-card
         title="Title"
         subtitle="Subtitle">
         <template #toolbar>
@@ -61,7 +61,7 @@ import BaseShadowBox from "@/components/BaseShadowBox.vue";
             Row 3
           </div>
         </div>
-      </base-shadow-box>
+      </base-card>
     </div>
   </div>
 </template>

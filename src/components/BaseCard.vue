@@ -15,42 +15,42 @@ const showHeader = computed(() => {
 
 <template>
   <div 
-    class="base-shadow-box flex flex-col gap-6 bg-white rounded shadow p-4">
+    class="base-card flex flex-col gap-6 bg-white rounded shadow p-4">
     <div
       v-if="showHeader"
-      class="base-shadow-box__header flex gap-4">
+      class="base-card__header flex gap-4">
 
       <div 
-        class="base-shadow-box__titles flex-grow">
+        class="base-card__titles flex-grow">
         
         <div
           v-if="props.title"
-          class="base-shadow-box__title text-lg font-bold">
+          class="base-card__title text-lg font-bold">
           {{ props.title }}
         </div>
 
         <div
           v-if="props.subtitle"
-          class="base-shadow-box__subtitle">
+          class="base-card__subtitle">
           {{ props.subtitle }}
         </div>
       </div>
       
-      <div class="base-shadow-box__toolbar button-group">
+      <div class="base-card__toolbar button-group">
         <slot name="toolbar"></slot>
       </div>
 
     </div>
 
     <div
-      class="base-shadow-box__content">
+      class="base-card__content">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <style lang="less">
-.base-shadow-box {
+.base-card {
   
   button {
     background-color: var(--gray-6);
@@ -61,13 +61,7 @@ const showHeader = computed(() => {
   }
 }
 
-.base-shadow-box__title {
-  + .base-shadow-box__subtitle {
-  @apply mt-1;
-  }
-}
-
-.base-shadow-box__subtitle {
+.base-card__subtitle {
   color: var(--gray-2);
 }
 </style>
