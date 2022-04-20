@@ -44,9 +44,12 @@ watchEffect(() => {
 });
 
 let timeout: number | null;
-let defaultBodyOverflow = document.body.style.overflow;
 const overlayVisible = ref(false);
 const contentVisible = ref(false);
+
+document.body.addEventListener("wheel", handleWheel, {
+  passive: false
+});
 
 watch(() => props.visible, (v) => {
   if (timeout) {
@@ -54,10 +57,6 @@ watch(() => props.visible, (v) => {
   }
 
   if (v) {
-    if (props.fullScreen) {
-      document.body.style.overflow = "hidden";
-    }
-
     overlayVisible.value = true;
     timeout = setTimeout(() => {
       contentVisible.value = true;
@@ -73,11 +72,16 @@ watch(() => props.visible, (v) => {
 });
 
 onUnmounted(() => {
-  document.body.style.overflow = defaultBodyOverflow;
+  document.body.removeEventListener("wheel", handleWheel);
 });
 
+function handleWheel(ev: Event) {
+  if (props.visible && props.fullScreen) {
+    ev.preventDefault();
+    return false;
+  }
+}
 function onAfterLeave() {
-  document.body.style.overflow = defaultBodyOverflow;
   overlayVisible.value = false;
   emits("overlay-hidden", null);
 }
