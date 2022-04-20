@@ -9,6 +9,7 @@ const data = ref<{
   lastName?: string;
   birthday?: Date;
   mail?: string;
+  salary?: number;
 }>({});
 
 const baseForm = ref<BaseFormExpose>();
@@ -43,6 +44,7 @@ function onValidateData() {
             :label="$t('birthday')"
             type="DxDateBox"
             v-model="data.birthday"
+            :format="$dtFP('d')"
             :required="true"
             :rules="{ dateInPast: true }">
           </base-form-item>
@@ -52,6 +54,14 @@ function onValidateData() {
             v-model="data.mail"
             :required="true"
             :rules="{ email: true }">
+          </base-form-item>
+
+          <base-form-item
+            :label="$t('salary')"
+            type="DxNumberBox"
+            :format="$numFP('n2')"
+            v-model="data.salary"
+            :required="true">
           </base-form-item>
         </div>
       </base-form>
@@ -69,7 +79,7 @@ function onValidateData() {
         Last name: {{ data.lastName }}
       </div>
       <div>
-        Birthday: {{ $globalization.format(data.birthday, "d") }}
+        Birthday: {{ data.birthday ? $d(data.birthday, "d") : "" }}
       </div>
       <div>
         Mail: {{ data.mail }}

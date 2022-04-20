@@ -10,16 +10,17 @@ import { DxScrollView } from "devextreme-vue/ui/scroll-view";
 import { DxValidationGroup } from "devextreme-vue/validation-group";
 import { DxCustomRule, DxEmailRule, DxRequiredRule, DxStringLengthRule, DxValidator } from "devextreme-vue/validator";
 import type { App, Plugin } from "vue";
+import { locale } from "devextreme/localization";
 
 const DX_INITIALIZED_EVENT = "dx-initialized";
 
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $dx: IDevExpressGlobalProperty;
+    $dx: DevExpressGlobalProperty;
   }
 }
 
-export function getDefaultDxWidgets(): IDevExpressWidget[] {
+export function getDefaultDxWidgets(): DevExpressWidget[] {
   return [
     { name: "DxButton", vueComponent: DxButton },
     { name: "DxDataGrid", vueComponent: DxDataGrid },
@@ -45,13 +46,15 @@ export function getDefaultDxWidgets(): IDevExpressWidget[] {
   ];
 }
 
-export function createDevExpressPlugin(options: IDevExpressOptions): Plugin {
+export function createDevExpressPlugin(options: DevExpressOptions): Plugin {
   return {
     install(app: App) {
+      locale(options.locale);
+      
       const widgets = options.widgets || getDefaultDxWidgets();
       widgets.forEach(w => registerWidget(app, w));
 
-      app.config.globalProperties.$dx = <IDevExpressGlobalProperty>{
+      app.config.globalProperties.$dx = <DevExpressGlobalProperty>{
         dataGrid: {
           webApiRemoteOperations: {
             filtering: true,
@@ -74,7 +77,7 @@ export function registerDxInitialized<T>(el: Element, callback: { (args: DxIniti
   });
 }
 
-function registerWidget(app: App, widget: IDevExpressWidget) {
+function registerWidget(app: App, widget: DevExpressWidget) {
   const methods = widget.vueComponent.extends?.methods;
   const hasIntegrationOptions = !!methods?.$_getExtraIntegrationOptions;
 
@@ -102,16 +105,17 @@ export type DxInitialized<T> = {
   component: T
 };
 
-interface IDevExpressOptions {
-  widgets?: IDevExpressWidget[];
+type DevExpressOptions = {
+  locale: string;
+  widgets?: DevExpressWidget[];
 }
 
-interface IDevExpressWidget {
+type DevExpressWidget = {
   name: string;
   vueComponent: any;
 }
 
-interface IDevExpressGlobalProperty {
+type DevExpressGlobalProperty = {
   dataGrid: {
     webApiRemoteOperations: Record<string, boolean>;
     filterRow: any;

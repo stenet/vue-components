@@ -1,6 +1,6 @@
 ﻿import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
-import moment from "moment";
 import type { Composer, VueMessageType } from "vue-i18n";
+import { getToday } from "@/services/dates";
 
 const rules: Record<string, ValidationCallback> = {};
 
@@ -108,8 +108,8 @@ registerValidationRule("dateInPast", (i18n, ev) => {
     return true;
   }
 
-  const isInFuture = moment(value).isBefore(moment().startOf("day"));
-  if (!isInFuture) {
+  const isInPast = getToday().getTime() > value.getTime();
+  if (!isInPast) {
     ev.rule.message = i18n.t("validation.date-in-past");
     return false;
   }
@@ -123,7 +123,7 @@ registerValidationRule("dateInFuture", (i18n, ev) => {
     return true;
   }
 
-  const isInFuture = moment(value).isAfter(moment().startOf("day"));
+  const isInFuture = getToday().getTime() < value.getTime();
   if (!isInFuture) {
     ev.rule.message = i18n.t("validation.date-in-future");
     return false;

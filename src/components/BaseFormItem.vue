@@ -4,6 +4,7 @@ import type { ValueChangedEvent } from "devextreme/ui/text_box";
 import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { getDateTimeFormatterParser } from "@/plugins/globalization";
 
 const i18n = useI18n();
 
@@ -13,6 +14,7 @@ const props = withDefaults(defineProps<{
   modelValue: any;
   rules?: Record<string, any>;
   required?: boolean;
+  format?: any;
   others?: any;
 }>(), {
   type: "DxTextBox"
@@ -29,6 +31,20 @@ const formItemClass = computed(() => {
     r.push("base-form-item--no-label");
   }
 
+  return r;
+});
+
+const others = computed(() => {
+  const r: Record<string, any> = {
+    ...(props.others || {})
+  };
+  
+  if (props.type == "DxDateBox" && props.format) {
+    r.displayFormat = props.format;
+  } else if (props.type == "DxNumberBox" && props.format) {
+    r.format = props.format;
+  }
+  
   return r;
 });
 

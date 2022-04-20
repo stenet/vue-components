@@ -26,7 +26,6 @@ export default defineConfig({
         "vue",
         "vue-i18n",
         "@vueuse/core",
-        "moment",
         /^devextreme.*/]
     }
   }
