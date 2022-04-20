@@ -27,20 +27,20 @@ function onValidateData() {
       <base-form ref="baseForm">
         <div class="grid grid-cols-2 gap-4">
           <base-form-item
-            label="First name"
+            :label="$t('first-name')"
             v-model="data.firstName"
             :required="true"
             :rules="{ stringLength: { min: 3, max: 20 }}">
           </base-form-item>
 
           <base-form-item
-            label="Last name"
+            :label="$t('last-name')"
             v-model="data.lastName"
             :required="true">
           </base-form-item>
 
           <base-form-item
-            label="Birthday"
+            :label="$t('birthday')"
             type="DxDateBox"
             v-model="data.birthday"
             :required="true"
@@ -48,7 +48,7 @@ function onValidateData() {
           </base-form-item>
 
           <base-form-item
-            label="Mail"
+            :label="$t('mail')"
             v-model="data.mail"
             :required="true"
             :rules="{ email: true }">

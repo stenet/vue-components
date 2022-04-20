@@ -1,3 +1,15 @@
-﻿{
-  "required": "Pflichtfeld"
+{
+  "validation": {
+    "alphanumeric": "Es dürfen nur Buchstaben und Zahlen erfasst werden",
+    "date-in-future": "Das Datum muss in der Zukunft liegen",
+    "date-in-past": "Das Datum muss in der Vergangenheit liegen",
+    "invalid-email": "Ungültige E-Mailadresse",
+    "min-length": "Es muss mindestens ein Zeichen erfasst werden | Es müssen mindestens {min} Zeichen erfasst werden",
+    "max-length": "Es darf maximal ein Zeichen erfasst werden | Es dürfen maximal {max} Zeichen erfasst werden",
+    "numeric": "Es dürfen nur Zahlen erfasst werden",
+    "password-lowercase": "Passwort benötigt mindestens einen Kleinbuchstaben",
+    "password-number": "Passwort benötigt mindestens eine Nummer",
+    "password-uppercase": "Passwort benötigt mindestens einen Großbuchstaben",
+    "required": "Pflichtfeld"
+  }
 }

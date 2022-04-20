@@ -12,7 +12,8 @@ import "./common.less";
 
 import "./main.less";
 
-import de from "./messages/de.json";
+import de from "./de.json";
+import messagesDe from "./messages/de.json";
 
 const app = createApp(App);
 
@@ -24,7 +25,10 @@ app
     locale: "de",
     fallbackLocale: "de",
     messages: {
-      de: de
+      de: {
+        ...de,
+        ...messagesDe
+      }
     }
   }));
 

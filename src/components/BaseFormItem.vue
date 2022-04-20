@@ -5,7 +5,7 @@ import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t } = useI18n();
+const i18n = useI18n();
 
 const props = withDefaults(defineProps<{
   type?: any;
@@ -49,14 +49,14 @@ function onValidate(ev: ValidationCallbackData) {
   }
   
   if (props.required) {
-    if (!validateRules(t,{ required: true }, ev)) {
+    if (!validateRules(i18n,{ required: true }, ev)) {
       updateMessage();
       return false;
     }
   }
 
   if (props.rules) {
-    if (!validateRules(t, props.rules, ev)) {
+    if (!validateRules(i18n, props.rules, ev)) {
       updateMessage();
       return false;
     }

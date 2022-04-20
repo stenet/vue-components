@@ -1,33 +1,33 @@
-﻿import type { Translate } from "@/i18n";
-import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
+﻿import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import moment from "moment";
+import type { Composer } from "vue-i18n";
 
 const rules: Record<string, ValidationCallback> = {};
 
-registerValidationRule("required", (t, ev) => {
+registerValidationRule("required", (i18n, ev) => {
   if (ev.value == void (0) || ev.value === "") {
-    ev.rule.message = "required"; //t("required");
+    ev.rule.message = i18n.t("validation.required");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("stringLength", (t, ev, params) => {
+registerValidationRule("stringLength", (i18n, ev, params) => {
   if (params.min && (ev.value?.toString() || "").length < params.min) {
-    ev.rule.message = `Min. length = ${params.min}`;
+    ev.rule.message = i18n.t("validation.min-length", { min: params.min }, <number>params.min);
     return false;
   }
 
   if (params.max && (ev.value?.toString() || "").length > params.max) {
-    ev.rule.message = `Max. length = ${params.max}`;
+    ev.rule.message = i18n.t("validation.max-length", { max: params.max }, <number>params.max);
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("alphanumeric", (t, ev) => {
+registerValidationRule("alphanumeric", (i18n, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -35,14 +35,14 @@ registerValidationRule("alphanumeric", (t, ev) => {
   const value = ev.value as string;
   const isValid = /^([a-zA-Z0-9]*)$/.test(value);
   if (!isValid) {
-    ev.rule.message = "Only characters and numbers allowed";
+    ev.rule.message = i18n.t("validation.alphanumeric");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("numeric", (t, ev) => {
+registerValidationRule("numeric", (i18n, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -50,14 +50,14 @@ registerValidationRule("numeric", (t, ev) => {
   const value = ev.value as string;
   const isValid = /^([0-9]*)$/.test(value);
   if (!isValid) {
-    ev.rule.message = "Only numbers allowed";
+    ev.rule.message = i18n.t("validation.numeric");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("email", (t, ev) => {
+registerValidationRule("email", (i18n, ev) => {
   if (ev.value == void (0) || ev.value == "") {
     return true;
   }
@@ -66,14 +66,14 @@ registerValidationRule("email", (t, ev) => {
 
   const isValid = /^[\d\w\._\-]+@([\d\w\._\-üäö]+\.)+[\w]+$/i.test(value);
   if (!isValid) {
-    ev.rule.message = "Invalid email";
+    ev.rule.message = i18n.t("validation.invalid-email");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("password", (t, ev) => {
+registerValidationRule("password", (i18n, ev) => {
   const value = <string>ev.value;
   if (!value) {
     return true;
@@ -85,24 +85,24 @@ registerValidationRule("password", (t, ev) => {
   }
 
   if (!/[A-Z]+/.test(value)) {
-    ev.rule.message = "Password needs min. one uppercase character";
+    ev.rule.message = i18n.t("validation.password-uppercase");
     return false;
   }
 
   if (!/[a-z]+/.test(value)) {
-    ev.rule.message = "Password needs min. one lowercase character";
+    ev.rule.message = i18n.t("validation.password-lowercase");
     return false;
   }
 
   if (!/[0-9]+/.test(value)) {
-    ev.rule.message = "Password needs min. one number";
+    ev.rule.message = i18n.t("validation.password-number");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("dateInPast", (t, ev) => {
+registerValidationRule("dateInPast", (i18n, ev) => {
   const value = <Date><any>ev.value;
   if (!value) {
     return true;
@@ -110,14 +110,14 @@ registerValidationRule("dateInPast", (t, ev) => {
 
   const isInFuture = moment(value).isBefore(moment().startOf("day"));
   if (!isInFuture) {
-    ev.rule.message = "Date has to be in past";
+    ev.rule.message = i18n.t("validation.date-in-past");
     return false;
   }
 
   return true;
 });
 
-registerValidationRule("dateInFuture", (t, ev) => {
+registerValidationRule("dateInFuture", (i18n, ev) => {
   const value = <Date><any>ev.value;
   if (!value) {
     return true;
@@ -125,7 +125,7 @@ registerValidationRule("dateInFuture", (t, ev) => {
 
   const isInFuture = moment(value).isAfter(moment().startOf("day"));
   if (!isInFuture) {
-    ev.rule.message = "Date has to be in future";
+    ev.rule.message = i18n.t("validation.date-in-future");
     return false;
   }
 
@@ -143,7 +143,7 @@ export function registerValidationRule(name: string, callback: ValidationCallbac
   rules[name] = callback;
 }
 
-export function validateRules(t: Translate, validators: Record<string, any>, ev: ValidationCallbackData) {
+export function validateRules(i18n: I18N, validators: Record<string, any>, ev: ValidationCallbackData) {
   for (const key in validators) {
     const params = validators[key];
     const rule = rules[key];
@@ -151,7 +151,7 @@ export function validateRules(t: Translate, validators: Record<string, any>, ev:
       continue;
     }
 
-    const r = rule(t, ev, params || {});
+    const r = rule(i18n, ev, params || {});
     if (!r) {
       return r;
     }
@@ -160,5 +160,7 @@ export function validateRules(t: Translate, validators: Record<string, any>, ev:
   return true;
 }
 
-export type ValidationCallback = (t: Translate, ev: ValidationCallbackData, params: ValidationParams) => boolean;
+export type ValidationCallback = (i18n: I18N, ev: ValidationCallbackData, params: ValidationParams) => boolean;
 type ValidationParams = Record<string, string | number>;
+
+type I18N = Composer;
