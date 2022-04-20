@@ -12,6 +12,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url))
     }
   },
+  server: {
+    host: "0.0.0.0"
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
