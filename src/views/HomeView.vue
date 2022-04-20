@@ -10,7 +10,7 @@ import ShowBaseTooltip from "@/showcase/ShowBaseTooltip.vue";
 import ShowBaseOverlay from "@/showcase/ShowBaseOverlay.vue";
 import ShowBaseSidebar from "@/showcase/ShowBaseSidebar.vue";
 import ShowBaseGrid from "@/showcase/ShowBaseGrid.vue";
-import ShowToast from "@/showcase/ShowToast.vue";
+import ShowBaseToast from "@/showcase/ShowBaseToast.vue";
 import ShowBaseDialog from "@/showcase/ShowBaseDialog.vue";
 import ShowBaseForm from "@/showcase/ShowBaseForm.vue";
 import ShowDx from "@/showcase/ShowDx.vue";
@@ -29,7 +29,7 @@ import ShowDx from "@/showcase/ShowDx.vue";
     <show-base-overlay></show-base-overlay>
     <show-base-sidebar></show-base-sidebar>
     <show-base-grid></show-base-grid>
-    <show-toast></show-toast>
+    <show-base-toast></show-base-toast>
     <show-base-dialog></show-base-dialog>
     <show-base-form></show-base-form>
     <show-dx></show-dx>

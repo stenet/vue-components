@@ -3,8 +3,9 @@ import { useToast } from "@/composables/use-toast";
 
 const toast = useToast();
 
-function onShowClick(type?: "info" | "danger" | "success") {
+function onShowClick(type?: "info" | "danger" | "success", icon?: string) {
   toast.show({
+    icon: icon,
     type: type,
     innerHtml: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
   });
@@ -20,7 +21,7 @@ function onShowClick(type?: "info" | "danger" | "success") {
       <div class="button-group">
         <dx-button
           text="Show default toast"
-          @click="onShowClick()">
+          @click="onShowClick(null, 'fa-solid fa-key')">
         </dx-button>
 
         <dx-button
