@@ -92,6 +92,27 @@ import BaseGridCol from "@/components/BaseGridCol.vue";
           Div 6
         </base-grid-col>
       </base-grid>
+
+      <base-grid class="show-base-grid__grid-5" cols="m:1fr;2fr xl:1fr;2fr;4fr" gap="0.5rem">
+        <base-grid-col span="xl:2">
+          Div 1
+        </base-grid-col>
+        <base-grid-col>
+          Div 2
+        </base-grid-col>
+        <base-grid-col>
+          Div 3
+        </base-grid-col>
+        <base-grid-col>
+          Div 4
+        </base-grid-col>
+        <base-grid-col>
+          Div 5
+        </base-grid-col>
+        <base-grid-col>
+          Div 6
+        </base-grid-col>
+      </base-grid>
     </div>
   </div>
 </template>
@@ -115,5 +136,10 @@ import BaseGridCol from "@/components/BaseGridCol.vue";
 .show-base-grid__grid-4 > div {
 @apply p-2;
   background-color: var(--orange-5);
+}
+
+.show-base-grid__grid-5 > div {
+@apply p-2;
+  background-color: var(--green-5);
 }
 </style>

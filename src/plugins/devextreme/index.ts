@@ -1,4 +1,4 @@
-﻿import { DxColorBox } from "devextreme-vue";
+﻿import { DxColorBox } from "devextreme-vue/color-box";
 import { DxButton } from "devextreme-vue/button";
 import { DxCheckBox } from "devextreme-vue/check-box";
 import { DxColumn, DxDataGrid, DxMasterDetail, DxSelection } from "devextreme-vue/data-grid";

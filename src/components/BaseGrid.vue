@@ -22,10 +22,17 @@ watchEffect(() => {
     return;
   }
   
-  const columns = parseInt(getGridDescriptionInfo(gridInfoProvider.value.size, getCols()) || "1");
-  gridInfoProvider.value.cols = columns;
+  const columnDescription = getGridDescriptionInfo(gridInfoProvider.value.size, getCols()) || "1";
   
-  style.value.gridTemplateColumns = `repeat(${columns}, minmax(0, 1fr))`;
+  if (isColumnCount(columnDescription)) {
+    gridInfoProvider.value.cols = parseInt(columnDescription);
+    style.value.gridTemplateColumns = `repeat(${columnDescription}, minmax(0, 1fr))`;
+  } else {
+    const tokens = columnDescription.split(";");
+    gridInfoProvider.value.cols = tokens.length;
+    style.value.gridTemplateColumns = tokens.join(" ");    
+  }
+  
   style.value.gap = props.gap;
 });
 
@@ -67,6 +74,15 @@ function getCols() {
     default: {
       return props.cols;
     }
+  }
+}
+function isColumnCount(columnDescription: string) {
+  const num = Number(columnDescription);
+  if (Number.isInteger(num)) {
+    if (num <= 0) {
+      throw new Error(`Column count ${num} not possible`);
+    } 
+    return true;
   }
 }
 </script>
