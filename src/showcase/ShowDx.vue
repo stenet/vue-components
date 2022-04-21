@@ -27,7 +27,7 @@ function onShowLoadingClick() {
     </h2>
     <div class="flex flex-col gap-4">
       <dx-date-box
-        :display-format="$dtFP('d')"
+        :display-format="$datFP('d')"
         type="datetime"
         v-model="date">
       </dx-date-box>

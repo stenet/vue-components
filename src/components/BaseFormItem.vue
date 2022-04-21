@@ -4,7 +4,7 @@ import type { ValueChangedEvent } from "devextreme/ui/text_box";
 import type { ValidationCallbackData } from "devextreme/ui/validation_rules";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { getDateTimeFormatterParser } from "@/plugins/globalization";
+import { getDateTimeFormatterParser, getNumberFormat } from "@/plugins/globalization";
 
 const i18n = useI18n();
 
@@ -40,9 +40,17 @@ const others = computed(() => {
   };
   
   if (props.type == "DxDateBox" && props.format) {
-    r.displayFormat = props.format;
+    if (typeof props.format === "string") {
+      r.displayFormat = getDateTimeFormatterParser(i18n.locale.value, props.format);
+    } else {
+      r.displayFormat = props.format; 
+    }
   } else if (props.type == "DxNumberBox" && props.format) {
-    r.format = props.format;
+    if (typeof props.format === "string") {
+      r.format = getNumberFormat(i18n.locale.value, props.format);
+    } else {
+      r.format = props.format;
+    }
   }
   
   return r;

@@ -44,7 +44,7 @@ function onValidateData() {
             :label="$t('birthday')"
             type="DxDateBox"
             v-model="data.birthday"
-            :format="$dtFP('d')"
+            format="d"
             :required="true"
             :rules="{ dateInPast: true }">
           </base-form-item>
@@ -59,7 +59,7 @@ function onValidateData() {
           <base-form-item
             :label="$t('salary')"
             type="DxNumberBox"
-            :format="$numFP('n2')"
+            format="n2"
             v-model="data.salary"
             :required="true">
           </base-form-item>

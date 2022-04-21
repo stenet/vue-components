@@ -28,7 +28,7 @@ export function getDateTimeFormatter(locale: string, formatStr: string) {
         return null;
       }
 
-      const dateTimeFormat = getDateTimeFormat(locale, formatStr);
+      const dateTimeFormat = getDateTimeFormatEx(locale, formatStr);
       return dateTimeFormat.format(value);     
     };
 
@@ -61,7 +61,7 @@ export function getDateTimeParser(locale: string, formatStr: string) {
         }
       }
 
-      const dateTimeFormat = getDateTimeFormat(locale, formatStr);
+      const dateTimeFormat = getDateTimeFormatEx(locale, formatStr);
       const tokens = getDateTimeTokens(key, dateTimeFormat);
 
       const date: any = {
@@ -153,7 +153,10 @@ export function getDateTimeFormatterParser(locale: string, formatStr: string) {
     parser: getDateTimeParser(locale, formatStr)
   };
 }
-function getDateTimeFormat(locale: string, formatStr: string) {
+export function getDateTimeFormat(locale: string, formatStr: string) {
+  return DefaultDateTimeFormats[formatStr];
+}
+function getDateTimeFormatEx(locale: string, formatStr: string) {
   const key = `${locale};${formatStr}`;
   
   let format = dateTimeFormats[key];
@@ -253,7 +256,7 @@ export function getNumberFormatter(locale: string, formatStr: string) {
         return null;
       }
 
-      const numberFormat = getNumberFormat(locale, formatStr);
+      const numberFormat = getNumberFormatEx(locale, formatStr);
       return numberFormat.format(value);
     };
 
@@ -272,7 +275,7 @@ export function getNumberParser(locale: string, formatStr: string) {
         return null;
       }
 
-      const numberFormat = getNumberFormat(locale, formatStr);
+      const numberFormat = getNumberFormatEx(locale, formatStr);
       const separator = getNumberCommaSeparator(key, numberFormat);
       let separatorAdded = false;
       
@@ -301,7 +304,10 @@ export function getNumberFormatterParser(locale: string, formatStr: string) {
     parser: getNumberParser(locale, formatStr)
   };
 }
-function getNumberFormat(locale: string, formatStr: string) {
+export function getNumberFormat(locale: string, formatStr: string) {
+  return DefaultNumberFormats[formatStr];
+}
+function getNumberFormatEx(locale: string, formatStr: string) {
   const key = `${locale};${formatStr}`;
 
   let format = numberFormats[key];
